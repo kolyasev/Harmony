@@ -5,7 +5,7 @@ protocol Transaction
 
     associatedtype Result
 
-    func run(database: Database) -> Result
+    func run(entityCollectionStateManager: EntityCollectionStateManager<TransactionEntity>) -> Result
 }
 
 class ReadTransaction<T: Entity, R>: Transaction
@@ -19,11 +19,10 @@ class ReadTransaction<T: Entity, R>: Transaction
         self.block = block
     }
 
-    func run(database: Database) -> R
+    func run(entityCollectionStateManager: EntityCollectionStateManager<T>) -> R
     {
-        return database.read { state in
-            let collectionState = EntityCollectionReadState<T>(databaseState: state)
-            return self.block(collectionState)
+        return entityCollectionStateManager.read { state in
+            return self.block(state)
         }
     }
 
@@ -43,11 +42,10 @@ class ReadWriteTransaction<T: Entity, R>: Transaction
         self.block = block
     }
 
-    func run(database: Database) -> R
+    func run(entityCollectionStateManager: EntityCollectionStateManager<T>) -> R
     {
-        return database.write { state in
-            let collectionState = EntityCollectionReadWriteState<T>(databaseState: state)
-            return self.block(collectionState)
+        return entityCollectionStateManager.write { state in
+            return self.block(state)
         }
     }
 

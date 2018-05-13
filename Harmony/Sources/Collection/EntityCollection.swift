@@ -1,15 +1,18 @@
 
 class EntityCollection<T: Entity>
 {
-    init(transactionQueue: TransactionQueue)
+    init(baseEntityStorage: BaseEntityStorage)
     {
-        self.transactionQueue = transactionQueue
+        let entityCollectionStorage = EntityCollectionStorage<T>(baseEntityStorage: baseEntityStorage)
+        self.stateManager = EntityCollectionStateManager(entityStorage: entityCollectionStorage)
+        self.transactionQueue.target = self
     }
 
-    func view() -> EntityCollectionView<T>
-    {
-        fatalError()
-    }
+    // FIXME: Not implemented
+//    func view() -> EntityCollectionView<T>
+//    {
+//        fatalError()
+//    }
 
     func read<R>(_ block: @escaping (EntityCollectionReadState<T>) -> R) -> R
     {
@@ -23,7 +26,14 @@ class EntityCollection<T: Entity>
         return self.transactionQueue.enqueueSync(transaction: transaction)
     }
 
-    private let transactionQueue: TransactionQueue
+    func perform<EntityTransaction: Transaction, R>(transaction: EntityTransaction) -> R where EntityTransaction.TransactionEntity == T, EntityTransaction.Result == R
+    {
+        return transaction.run(entityCollectionStateManager: self.stateManager)
+    }
+
+    private let transactionQueue = TransactionQueue<EntityCollection<T>>()
+
+    private let stateManager: EntityCollectionStateManager<T>
 }
 
 extension EntityCollection
@@ -39,4 +49,13 @@ extension EntityCollection
         let transaction = ReadWriteTransaction<T, R>(block: block)
         return self.transactionQueue.enqueueAsync(transaction: transaction, completion: completion)
     }
+}
+
+extension EntityCollection: TransactionQueueTarget
+{
+    func run<Trans: Transaction>(transaction: Trans) -> Trans.Result where Trans.TransactionEntity == TransactionEntity {
+        return transaction.run(entityCollectionStateManager: self.stateManager)
+    }
+
+    typealias TransactionEntity = T
 }

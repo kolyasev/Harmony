@@ -3,14 +3,16 @@ import Foundation
 
 protocol TransactionQueueTarget: class
 {
-    func run<T>(transaction: T) -> T.Result where T: Transaction
+    func run<T: Transaction>(transaction: T) -> T.Result where T.TransactionEntity == TransactionEntity
+
+    associatedtype TransactionEntity: Entity
 }
 
-class TransactionQueue
+class TransactionQueue<Target: TransactionQueueTarget>
 {
-    weak var target: TransactionQueueTarget?
+    weak var target: Target?
 
-    func enqueueAsync<T>(transaction: T, completion: ((T.Result) -> Void)? = nil) where T: Transaction
+    func enqueueAsync<T: Transaction>(transaction: T, completion: ((T.Result) -> Void)? = nil) where T.TransactionEntity == Target.TransactionEntity
     {
         return self.queue.async {
             let result: T.Result = self.getTarget().run(transaction: transaction)
@@ -24,14 +26,14 @@ class TransactionQueue
         }
     }
 
-    func enqueueSync<T>(transaction: T) -> T.Result where T: Transaction
+    func enqueueSync<T: Transaction>(transaction: T) -> T.Result where T.TransactionEntity == Target.TransactionEntity
     {
         return self.queue.sync {
             return self.getTarget().run(transaction: transaction)
         }
     }
 
-    private func getTarget() -> TransactionQueueTarget
+    private func getTarget() -> Target
     {
         guard let target = self.target else {
             fatalError("Unknown target for queue.")

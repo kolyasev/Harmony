@@ -8,17 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		354299011FF2877600D1CEE7 /* EntityPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354299001FF2877600D1CEE7 /* EntityPredicate.swift */; };
-		3562E9B21FEA8FB7007E83A6 /* EntityEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3562E9B11FEA8FB7007E83A6 /* EntityEncoder.swift */; };
-		3562E9B41FEAC8AC007E83A6 /* EntityDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3562E9B31FEAC8AC007E83A6 /* EntityDecoder.swift */; };
-		3562E9B61FEBF319007E83A6 /* EntityEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3562E9B51FEBF319007E83A6 /* EntityEncoderTests.swift */; };
-		3562E9B81FEBF6B8007E83A6 /* EntityDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3562E9B71FEBF6B8007E83A6 /* EntityDecoderTests.swift */; };
 		3562E9BF1FED0F11007E83A6 /* BaseEntityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3562E9BE1FED0F11007E83A6 /* BaseEntityIdentifier.swift */; };
-		3562E9C11FED102D007E83A6 /* DatabaseStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3562E9C01FED102D007E83A6 /* DatabaseStateManager.swift */; };
 		3562E9C31FED62B5007E83A6 /* EntityUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3562E9C21FED62B5007E83A6 /* EntityUpdate.swift */; };
-		35B13F0E1FE13CE900D1E497 /* EntityDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B13F0D1FE13CE900D1E497 /* EntityDataStorage.swift */; };
 		35BD5FE11FD0299200E5EADC /* DataFlow.h in Headers */ = {isa = PBXBuildFile; fileRef = 35BD5FDF1FD0299200E5EADC /* DataFlow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35BD5FF61FD0299C00E5EADC /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FE81FD0299C00E5EADC /* TestModel.swift */; };
-		35BD5FF71FD0299C00E5EADC /* EntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FEA1FD0299C00E5EADC /* EntityStorage.swift */; };
+		35BD5FF71FD0299C00E5EADC /* BaseEntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FEA1FD0299C00E5EADC /* BaseEntityStorage.swift */; };
 		35BD5FF91FD0299C00E5EADC /* EntityCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FEC1FD0299C00E5EADC /* EntityCollection.swift */; };
 		35BD5FFA1FD0299C00E5EADC /* EntityCollectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FED1FD0299C00E5EADC /* EntityCollectionProvider.swift */; };
 		35BD5FFB1FD0299C00E5EADC /* EntityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FEE1FD0299C00E5EADC /* EntityCollectionView.swift */; };
@@ -30,12 +24,13 @@
 		35BD600C1FD02C0000E5EADC /* Harmony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35BD5FDC1FD0299200E5EADC /* Harmony.framework */; };
 		35BD60131FD03E4200E5EADC /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD60121FD03E4200E5EADC /* Database.swift */; };
 		35BD60151FD0403100E5EADC /* EntityCollectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD60141FD0403100E5EADC /* EntityCollectionState.swift */; };
-		35BD60171FD0426D00E5EADC /* DatabaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD60161FD0426D00E5EADC /* DatabaseState.swift */; };
 		35BD60191FD0657300E5EADC /* DatabaseSID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD60181FD0657300E5EADC /* DatabaseSID.swift */; };
 		35BD601C1FD1595B00E5EADC /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD601B1FD1595B00E5EADC /* Lock.swift */; };
-		35DAB3841FDEE09B006574CA /* EntityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DAB3831FDEE09B006574CA /* EntityData.swift */; };
-		35ECD8501FF54CBE001B3054 /* EntityDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECD84F1FF54CBE001B3054 /* EntityDataCache.swift */; };
-		35ECD8521FF646FE001B3054 /* EntityHolderCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECD8511FF646FE001B3054 /* EntityHolderCache.swift */; };
+		6647D8BD209CA6AD00E3EF9B /* EntityCollectionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8BC209CA6AD00E3EF9B /* EntityCollectionStateManager.swift */; };
+		6647D8C0209D654400E3EF9B /* EntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8BF209D654400E3EF9B /* EntityStorage.swift */; };
+		6647D8C2209F4F4D00E3EF9B /* EntityCollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8C1209F4F4D00E3EF9B /* EntityCollectionStorage.swift */; };
+		6647D8C420A7293D00E3EF9B /* InMemoryEntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8C320A7293D00E3EF9B /* InMemoryEntityStorage.swift */; };
+		6647D8C620A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8C520A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,19 +45,13 @@
 
 /* Begin PBXFileReference section */
 		354299001FF2877600D1CEE7 /* EntityPredicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPredicate.swift; sourceTree = "<group>"; };
-		3562E9B11FEA8FB7007E83A6 /* EntityEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityEncoder.swift; sourceTree = "<group>"; };
-		3562E9B31FEAC8AC007E83A6 /* EntityDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDecoder.swift; sourceTree = "<group>"; };
-		3562E9B51FEBF319007E83A6 /* EntityEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityEncoderTests.swift; sourceTree = "<group>"; };
-		3562E9B71FEBF6B8007E83A6 /* EntityDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDecoderTests.swift; sourceTree = "<group>"; };
 		3562E9BE1FED0F11007E83A6 /* BaseEntityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEntityIdentifier.swift; sourceTree = "<group>"; };
-		3562E9C01FED102D007E83A6 /* DatabaseStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseStateManager.swift; sourceTree = "<group>"; };
 		3562E9C21FED62B5007E83A6 /* EntityUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityUpdate.swift; sourceTree = "<group>"; };
-		35B13F0D1FE13CE900D1E497 /* EntityDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDataStorage.swift; sourceTree = "<group>"; };
 		35BD5FDC1FD0299200E5EADC /* Harmony.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Harmony.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35BD5FDF1FD0299200E5EADC /* DataFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataFlow.h; sourceTree = "<group>"; };
 		35BD5FE01FD0299200E5EADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35BD5FE81FD0299C00E5EADC /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
-		35BD5FEA1FD0299C00E5EADC /* EntityStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityStorage.swift; sourceTree = "<group>"; };
+		35BD5FEA1FD0299C00E5EADC /* BaseEntityStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEntityStorage.swift; sourceTree = "<group>"; };
 		35BD5FEC1FD0299C00E5EADC /* EntityCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollection.swift; sourceTree = "<group>"; };
 		35BD5FED1FD0299C00E5EADC /* EntityCollectionProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollectionProvider.swift; sourceTree = "<group>"; };
 		35BD5FEE1FD0299C00E5EADC /* EntityCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollectionView.swift; sourceTree = "<group>"; };
@@ -75,12 +64,13 @@
 		35BD600B1FD02C0000E5EADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35BD60121FD03E4200E5EADC /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		35BD60141FD0403100E5EADC /* EntityCollectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionState.swift; sourceTree = "<group>"; };
-		35BD60161FD0426D00E5EADC /* DatabaseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseState.swift; sourceTree = "<group>"; };
 		35BD60181FD0657300E5EADC /* DatabaseSID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSID.swift; sourceTree = "<group>"; };
 		35BD601B1FD1595B00E5EADC /* Lock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lock.swift; sourceTree = "<group>"; };
-		35DAB3831FDEE09B006574CA /* EntityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityData.swift; sourceTree = "<group>"; };
-		35ECD84F1FF54CBE001B3054 /* EntityDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDataCache.swift; sourceTree = "<group>"; };
-		35ECD8511FF646FE001B3054 /* EntityHolderCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityHolderCache.swift; sourceTree = "<group>"; };
+		6647D8BC209CA6AD00E3EF9B /* EntityCollectionStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionStateManager.swift; sourceTree = "<group>"; };
+		6647D8BF209D654400E3EF9B /* EntityStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityStorage.swift; sourceTree = "<group>"; };
+		6647D8C1209F4F4D00E3EF9B /* EntityCollectionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionStorage.swift; sourceTree = "<group>"; };
+		6647D8C320A7293D00E3EF9B /* InMemoryEntityStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryEntityStorage.swift; sourceTree = "<group>"; };
+		6647D8C520A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryBaseEntityStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +98,7 @@
 				35BD5FEC1FD0299C00E5EADC /* EntityCollection.swift */,
 				35BD5FED1FD0299C00E5EADC /* EntityCollectionProvider.swift */,
 				35BD60141FD0403100E5EADC /* EntityCollectionState.swift */,
+				6647D8BC209CA6AD00E3EF9B /* EntityCollectionStateManager.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -117,7 +108,6 @@
 			children = (
 				3562E9BE1FED0F11007E83A6 /* BaseEntityIdentifier.swift */,
 				35BD5FF11FD0299C00E5EADC /* Entity.swift */,
-				35DAB3831FDEE09B006574CA /* EntityData.swift */,
 				3562E9C21FED62B5007E83A6 /* EntityUpdate.swift */,
 			);
 			path = Entity;
@@ -130,15 +120,6 @@
 				35BD5FF51FD0299C00E5EADC /* TransactionQueue.swift */,
 			);
 			path = Transaction;
-			sourceTree = "<group>";
-		};
-		3562E9BC1FEC11F4007E83A6 /* Coding */ = {
-			isa = PBXGroup;
-			children = (
-				3562E9B31FEAC8AC007E83A6 /* EntityDecoder.swift */,
-				3562E9B11FEA8FB7007E83A6 /* EntityEncoder.swift */,
-			);
-			path = Coding;
 			sourceTree = "<group>";
 		};
 		3562E9BD1FEC120F007E83A6 /* View */ = {
@@ -195,15 +176,11 @@
 				3562E9BA1FEC11D9007E83A6 /* Entity */,
 				3562E9B91FEC11C4007E83A6 /* Collection */,
 				3562E9BB1FEC11E9007E83A6 /* Transaction */,
-				3562E9BC1FEC11F4007E83A6 /* Coding */,
 				3562E9BD1FEC120F007E83A6 /* View */,
+				6647D8BE209D619100E3EF9B /* Storage */,
 				35ECD84E1FF54C92001B3054 /* Cache */,
 				35BD60121FD03E4200E5EADC /* Database.swift */,
-				3562E9C01FED102D007E83A6 /* DatabaseStateManager.swift */,
 				35BD60181FD0657300E5EADC /* DatabaseSID.swift */,
-				35BD60161FD0426D00E5EADC /* DatabaseState.swift */,
-				35B13F0D1FE13CE900D1E497 /* EntityDataStorage.swift */,
-				35BD5FEA1FD0299C00E5EADC /* EntityStorage.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -212,8 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				35BD60091FD02C0000E5EADC /* HarmonyTests.swift */,
-				3562E9B51FEBF319007E83A6 /* EntityEncoderTests.swift */,
-				3562E9B71FEBF6B8007E83A6 /* EntityDecoderTests.swift */,
 				35BD600B1FD02C0000E5EADC /* Info.plist */,
 			);
 			path = HarmonyTests;
@@ -230,10 +205,20 @@
 		35ECD84E1FF54C92001B3054 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				35ECD84F1FF54CBE001B3054 /* EntityDataCache.swift */,
-				35ECD8511FF646FE001B3054 /* EntityHolderCache.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		6647D8BE209D619100E3EF9B /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				35BD5FEA1FD0299C00E5EADC /* BaseEntityStorage.swift */,
+				6647D8C520A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift */,
+				6647D8BF209D654400E3EF9B /* EntityStorage.swift */,
+				6647D8C320A7293D00E3EF9B /* InMemoryEntityStorage.swift */,
+				6647D8C1209F4F4D00E3EF9B /* EntityCollectionStorage.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,28 +350,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				35BD5FFC1FD0299C00E5EADC /* EntityCollectionViewProvider.swift in Sources */,
-				35B13F0E1FE13CE900D1E497 /* EntityDataStorage.swift in Sources */,
 				35BD60191FD0657300E5EADC /* DatabaseSID.swift in Sources */,
 				35BD5FFB1FD0299C00E5EADC /* EntityCollectionView.swift in Sources */,
-				35ECD8521FF646FE001B3054 /* EntityHolderCache.swift in Sources */,
 				354299011FF2877600D1CEE7 /* EntityPredicate.swift in Sources */,
 				35BD60011FD0299C00E5EADC /* Transaction.swift in Sources */,
 				3562E9C31FED62B5007E83A6 /* EntityUpdate.swift in Sources */,
+				6647D8C620A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift in Sources */,
 				35BD601C1FD1595B00E5EADC /* Lock.swift in Sources */,
+				6647D8BD209CA6AD00E3EF9B /* EntityCollectionStateManager.swift in Sources */,
 				35BD60151FD0403100E5EADC /* EntityCollectionState.swift in Sources */,
-				35BD60171FD0426D00E5EADC /* DatabaseState.swift in Sources */,
-				3562E9B41FEAC8AC007E83A6 /* EntityDecoder.swift in Sources */,
 				35BD5FF91FD0299C00E5EADC /* EntityCollection.swift in Sources */,
-				3562E9C11FED102D007E83A6 /* DatabaseStateManager.swift in Sources */,
 				35BD5FFE1FD0299C00E5EADC /* Entity.swift in Sources */,
+				6647D8C2209F4F4D00E3EF9B /* EntityCollectionStorage.swift in Sources */,
 				35BD5FFA1FD0299C00E5EADC /* EntityCollectionProvider.swift in Sources */,
-				35DAB3841FDEE09B006574CA /* EntityData.swift in Sources */,
-				35BD5FF71FD0299C00E5EADC /* EntityStorage.swift in Sources */,
-				3562E9B21FEA8FB7007E83A6 /* EntityEncoder.swift in Sources */,
+				35BD5FF71FD0299C00E5EADC /* BaseEntityStorage.swift in Sources */,
 				35BD5FF61FD0299C00E5EADC /* TestModel.swift in Sources */,
+				6647D8C0209D654400E3EF9B /* EntityStorage.swift in Sources */,
+				6647D8C420A7293D00E3EF9B /* InMemoryEntityStorage.swift in Sources */,
 				35BD60131FD03E4200E5EADC /* Database.swift in Sources */,
 				35BD60021FD0299C00E5EADC /* TransactionQueue.swift in Sources */,
-				35ECD8501FF54CBE001B3054 /* EntityDataCache.swift in Sources */,
 				3562E9BF1FED0F11007E83A6 /* BaseEntityIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,9 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3562E9B81FEBF6B8007E83A6 /* EntityDecoderTests.swift in Sources */,
 				35BD600A1FD02C0000E5EADC /* HarmonyTests.swift in Sources */,
-				3562E9B61FEBF319007E83A6 /* EntityEncoderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

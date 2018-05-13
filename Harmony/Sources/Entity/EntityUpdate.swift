@@ -1,13 +1,16 @@
 
-struct EntityUpdate
+enum EntityUpdate<T: Entity>
 {
-    let identifier: BaseEntityIdentifier
+    case insert(entity: T)
+    case remove(key: T.Key)
+}
 
-    let type: UpdateType
-
-    enum UpdateType
-    {
-        case insert
-        case remove
+extension EntityUpdate
+{
+    var entity: T? {
+        guard case .insert(let entity) = self else {
+            return nil
+        }
+        return entity
     }
 }

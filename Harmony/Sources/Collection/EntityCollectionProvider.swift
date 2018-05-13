@@ -1,9 +1,9 @@
 
 class EntityCollectionProvider
 {
-    init(transactionQueue: TransactionQueue)
+    init(baseEntityStorage: BaseEntityStorage)
     {
-        self.transactionQueue = transactionQueue
+        self.baseEntityStorage = baseEntityStorage
     }
 
     func collection<T>(_ type: T.Type) -> EntityCollection<T>
@@ -25,10 +25,10 @@ class EntityCollectionProvider
 
     private func makeDataCollection<T>() -> EntityCollection<T>
     {
-        return EntityCollection(transactionQueue: self.transactionQueue)
+        return EntityCollection(baseEntityStorage: self.baseEntityStorage)
     }
 
-    private let transactionQueue: TransactionQueue
+    private let baseEntityStorage: BaseEntityStorage
 
     private var collections: [ObjectIdentifier: Any] = [:]
 
