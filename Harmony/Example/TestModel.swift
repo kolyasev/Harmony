@@ -23,7 +23,8 @@ struct TestModel: Entity
     {
         return lhs.id == rhs.id &&
                lhs.title == rhs.title &&
-               lhs.number == rhs.number
+               lhs.number == rhs.number &&
+               lhs.child == rhs.child
     }
 
 }
@@ -43,7 +44,7 @@ struct ChildModel: Entity
     static func ==(lhs: ChildModel, rhs: ChildModel) -> Bool
     {
         return lhs.id == rhs.id &&
-               lhs.name == lhs.name
+               lhs.name == rhs.name
     }
 
 }

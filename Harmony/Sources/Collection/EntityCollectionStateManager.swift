@@ -8,7 +8,6 @@ class EntityCollectionStateManager<T: Entity>
     init<Storage: EntityReadWriteStorage>(entityStorage: Storage) where Storage.EnityType == T
     {
         self.entityStorage = AnyEntityReadWriteStorage<T>(entityStorage)
-        self.currentState = EntityCollectionReadState<T>(entityStorage: entityStorage)
     }
 
     // MARK: - Properties
@@ -41,8 +40,8 @@ class EntityCollectionStateManager<T: Entity>
     private func makeReadState() -> EntityCollectionReadState<T>
     {
         return self.stateLock.withCriticalScope {
-            let state = self.currentState.makeReadChild()
-            self.states.insert(state)
+            let state = EntityCollectionReadState(entityStorage: getEntityReadStorage())
+            self.activeStates.insert(state)
             return state
         }
     }
@@ -50,8 +49,8 @@ class EntityCollectionStateManager<T: Entity>
     private func makeReadWriteState() -> EntityCollectionReadWriteState<T>
     {
         return self.stateLock.withCriticalScope {
-            let state = self.currentState.makeReadWriteChild()
-            self.states.insert(state)
+            let state = EntityCollectionReadWriteState(entityStorage: getEntityReadStorage())
+            self.activeStates.insert(state)
             return state
         }
     }
@@ -59,25 +58,23 @@ class EntityCollectionStateManager<T: Entity>
     private func commit(state: EntityCollectionReadState<T>)
     {
         return self.stateLock.withCriticalScope {
-            guard let state = self.states.remove(state) else {
+            guard let state = self.activeStates.remove(state) else {
                 fatalError("Unexpected database state.")
             }
 
-            if state.hasChanges {
-                setCurrentState(state)
+            if let readWriteState = (state as? EntityCollectionReadWriteState),
+               readWriteState.hasChanges
+            {
+                addWriteState(readWriteState)
             }
 
-            saveCurrentStateIfPossible()
+            saveWriteStatesIfNeeded()
         }
     }
 
-    private func setCurrentState(_ state: EntityCollectionReadState<T>)
+    private func addWriteState(_ state: EntityCollectionReadWriteState<T>)
     {
-        guard state.isChild(of: self.currentState) else {
-            fatalError("Trying to perform multiple write operations at same time.")
-        }
-
-        self.currentState = state
+        self.writeStates.append(state)
 
         readAsync(withState: state) { readState in
             self.handleEntityUpdates(for: readState)
@@ -86,26 +83,24 @@ class EntityCollectionStateManager<T: Entity>
 
     private func readAsync(withState state: EntityCollectionReadState<T>, block: @escaping (EntityCollectionReadState<T>) -> Void)
     {
-        let readState = state.makeReadChild()
-        self.states.insert(readState)
+        let readState = EntityCollectionReadState(entityStorage: state)
+        self.activeStates.insert(readState)
         DispatchQueue.global().async {
             block(readState)
             self.commit(state: readState)
         }
     }
 
-    private func saveCurrentStateIfPossible()
+    private func saveWriteStatesIfNeeded()
     {
-        guard self.states.isEmpty else { return }
+        guard self.activeStates.isEmpty else { return }
 
         // There is no other read or write transactions
-        // We able to write state to entity storage
-        if  self.currentState.hasChanges {
-            self.currentState.writeChanges(to: self.entityStorage)
-
-            // Create fresh state based of current entity storage state
-            self.currentState = EntityCollectionReadState(entityStorage: self.entityStorage)
+        // We able to write states to entity storage
+        for state in self.writeStates {
+            state.writeChanges(to: self.entityStorage)
         }
+        self.writeStates = []
     }
 
     // FIXME: Not implemented
@@ -114,9 +109,19 @@ class EntityCollectionStateManager<T: Entity>
         // ...
     }
 
-    private var currentState: EntityCollectionReadState<T>
+    private func getEntityReadStorage() -> AnyEntityReadStorage<T>
+    {
+        guard let writeState = self.writeStates.last else {
+            return AnyEntityReadStorage(self.entityStorage)
+        }
+        return AnyEntityReadStorage(writeState)
+    }
 
-    private var states = Set<EntityCollectionReadState<T>>()
+    // MARK: - Private Properties
+
+    private var activeStates: Set<EntityCollectionReadState<T>> = []
+
+    private var writeStates: [EntityCollectionReadWriteState<T>] = []
 
     private let stateLock = Lock()
 

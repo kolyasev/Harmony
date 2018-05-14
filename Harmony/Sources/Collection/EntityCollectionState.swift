@@ -1,48 +1,13 @@
 
 class EntityCollectionState<T: Entity>
 {
-    // MARK: - Initialization
-
-    fileprivate init(parentState: EntityCollectionState<T>?)
-    {
-        self.parentState = parentState
-    }
-
     // MARK: - Properties
 
     let sid = DatabaseSID()
 
-    var hasChanges: Bool {
-        return self.parentState?.hasChanges ?? false
-    }
-
-    // MARK: - Functions
-
-    func isChild(of parent: EntityCollectionState<T>) -> Bool
-    {
-        if self.parentState === parent {
-            return true
-        }
-
-        if let parentState = self.parentState, parentState.isChild(of: parent) {
-            return true
-        }
-
-        return false
-    }
-
-    func writeChanges<Storage: EntityReadWriteStorage>(to entityStorage: Storage) where Storage.EnityType == T
-    {
-        self.parentState?.writeChanges(to: entityStorage)
-    }
-
     // MARK: - Inner Types
 
     typealias EnityType = T
-
-    // MARK: - Private Properties
-
-    private let parentState: EntityCollectionState<T>?
 }
 
 class EntityCollectionReadState<T: Entity>: EntityCollectionState<T>, EntityReadStorage
@@ -52,23 +17,7 @@ class EntityCollectionReadState<T: Entity>: EntityCollectionState<T>, EntityRead
     init<Storage: EntityReadStorage>(entityStorage: Storage) where Storage.EnityType == T
     {
         self.entityStorage = AnyEntityReadStorage<T>(entityStorage)
-        super.init(parentState: nil)
-    }
-
-    fileprivate init(parentState: EntityCollectionReadState<T>)
-    {
-        self.entityStorage = AnyEntityReadStorage<T>(parentState)
-        super.init(parentState: parentState)
-    }
-
-    // MARK: - Functions
-
-    func makeReadChild() -> EntityCollectionReadState<T> {
-        return EntityCollectionReadState(parentState: self)
-    }
-
-    func makeReadWriteChild() -> EntityCollectionReadWriteState<T> {
-        return EntityCollectionReadWriteState(parentState: self)
+        super.init()
     }
 
     // MARK: - Functions: Read
@@ -95,10 +44,16 @@ class EntityCollectionReadState<T: Entity>: EntityCollectionState<T>, EntityRead
 
 class EntityCollectionReadWriteState<T: Entity>: EntityCollectionReadState<T>, EntityReadWriteStorage
 {
+    // MARK: - Initialization
+
+    override init<Storage: EntityReadStorage>(entityStorage: Storage) where Storage.EnityType == T {
+        super.init(entityStorage: entityStorage)
+    }
+
     // MARK: - Properties
 
-    override var hasChanges: Bool {
-        return !self.updates.isEmpty || super.hasChanges
+    var hasChanges: Bool {
+        return !self.updates.isEmpty
     }
 
     // MARK: - Functions: Read
@@ -164,10 +119,8 @@ class EntityCollectionReadWriteState<T: Entity>: EntityCollectionReadState<T>, E
 
     // MARK: - Functions
 
-    override func writeChanges<Storage: EntityReadWriteStorage>(to entityStorage: Storage) where Storage.EnityType == T
+    func writeChanges<Storage: EntityReadWriteStorage>(to entityStorage: Storage) where Storage.EnityType == T
     {
-        super.writeChanges(to: entityStorage)
-
         for update in self.updates.values
         {
             switch update

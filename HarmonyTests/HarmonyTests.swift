@@ -40,52 +40,6 @@ class HarmonyTests: XCTestCase
         XCTAssertEqual(entityFromDB!, entity)
     }
 
-    func testUpdateChildDirectly()
-    {
-        let entity = TestModel(id: "3", title: "test", number: 10, child: ChildModel(id: "5", name: "child"))
-        let testCollection = self.db.collection(TestModel.self)
-        let childCollection = self.db.collection(ChildModel.self)
-
-        testCollection.write { state in
-            state.insert(entity: entity)
-        }
-
-        let newChild = ChildModel(id: "5", name: "new child")
-        childCollection.write { state in
-            state.insert(entity: newChild)
-        }
-
-        let entityFromDB = testCollection.read { state in
-            return state.entity(forKey: "3")
-        }
-
-        XCTAssertNotNil(entityFromDB)
-        XCTAssertEqual(entityFromDB!.child, newChild)
-    }
-
-    func testUpdateChildNested()
-    {
-        let entity = TestModel(id: "3", title: "test", number: 10, child: ChildModel(id: "5", name: "child"))
-        let testCollection = self.db.collection(TestModel.self)
-        let childCollection = self.db.collection(ChildModel.self)
-
-        testCollection.write { state in
-            state.insert(entity: entity)
-        }
-
-        let newEntity = TestModel(id: "10", title: "other test", number: 20, child: ChildModel(id: "5", name: "new child"))
-        testCollection.write { state in
-            state.insert(entity: newEntity)
-        }
-
-        let childFromDB = childCollection.read { state in
-            return state.entity(forKey: "5")
-        }
-
-        XCTAssertNotNil(childFromDB)
-        XCTAssertEqual(childFromDB!, newEntity.child)
-    }
-
     func testReadInsertedInWrite()
     {
         let entity = TestModel(id: "3", title: "test", number: 10, child: ChildModel(id: "5", name: "child"))
