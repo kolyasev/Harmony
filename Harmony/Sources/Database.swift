@@ -15,11 +15,10 @@ class Database
         return self.collectionProvider.collection(type)
     }
 
-    // FIXME: Not implemented
-//    func view<P: EntityPredicate>(_ type: P.Root.Type, predicate: P) -> EntityCollectionView<P.Root>
-//    {
-//        return self.viewProvider.view(type, predicate: predicate)
-//    }
+    func view<Predicate: EntityPredicate>(_ type: Predicate.Root.Type, predicate: Predicate) -> EntityCollectionView<Predicate.Root>
+    {
+        return collection(type).view(predicate)
+    }
 
     // FIXME: Not implemented
 //    func read<T: Entity, R>(_ block: (DatabaseState) -> R) -> R

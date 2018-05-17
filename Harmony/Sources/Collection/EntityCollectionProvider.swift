@@ -1,35 +1,42 @@
 
 class EntityCollectionProvider
 {
+    // MARK: - Initialization
+
     init(baseEntityStorage: BaseEntityStorage)
     {
         self.baseEntityStorage = baseEntityStorage
     }
 
-    func collection<T>(_ type: T.Type) -> EntityCollection<T>
-    {
-        let identifier = ObjectIdentifier(T.self)
-        let collection: EntityCollection<T>
+    // MARK: - Functions
 
-        if let existingCollection = self.collections[identifier] as? EntityCollection<T>
+    func collection<Element>(_ type: Element.Type) -> EntityCollection<Element>
+    {
+        let identifier = ObjectIdentifier(Element.self)
+        let collection: EntityCollection<Element>
+
+        if let existingCollection = self.collections[identifier] as? EntityCollection<Element>
         {
             collection = existingCollection
         }
         else {
-            collection = makeDataCollection()
+            collection = makeEntityCollection()
             self.collections[identifier] = collection
         }
 
         return collection
     }
 
-    private func makeDataCollection<T>() -> EntityCollection<T>
+    // MARK: - Private Functions
+
+    private func makeEntityCollection<Element>() -> EntityCollection<Element>
     {
         return EntityCollection(baseEntityStorage: self.baseEntityStorage)
     }
 
+    // MARK: - Private Properties
+
     private let baseEntityStorage: BaseEntityStorage
 
     private var collections: [ObjectIdentifier: Any] = [:]
-
 }

@@ -12,7 +12,7 @@ class EntityCollectionStateManager<T: Entity>
 
     // MARK: - Properties
 
-    let entityStorage: AnyEntityReadWriteStorage<T>
+    var updatesListener: UpdatesListener?
 
     // MARK: - Functions
 
@@ -63,7 +63,7 @@ class EntityCollectionStateManager<T: Entity>
             }
 
             if let readWriteState = (state as? EntityCollectionReadWriteState),
-               readWriteState.hasChanges
+               readWriteState.hasUpdates
             {
                 addWriteState(readWriteState)
             }
@@ -75,20 +75,7 @@ class EntityCollectionStateManager<T: Entity>
     private func addWriteState(_ state: EntityCollectionReadWriteState<T>)
     {
         self.writeStates.append(state)
-
-        readAsync(withState: state) { readState in
-            self.handleEntityUpdates(for: readState)
-        }
-    }
-
-    private func readAsync(withState state: EntityCollectionReadState<T>, block: @escaping (EntityCollectionReadState<T>) -> Void)
-    {
-        let readState = EntityCollectionReadState(entityStorage: state)
-        self.activeStates.insert(readState)
-        DispatchQueue.global().async {
-            block(readState)
-            self.commit(state: readState)
-        }
+        handleEntityUpdates(for: state)
     }
 
     private func saveWriteStatesIfNeeded()
@@ -103,10 +90,12 @@ class EntityCollectionStateManager<T: Entity>
         self.writeStates = []
     }
 
-    // FIXME: Not implemented
-    private func handleEntityUpdates(for state: EntityCollectionState<T>)
+    private func handleEntityUpdates(for state: EntityCollectionReadWriteState<T>)
     {
-        // ...
+        let updates = state.allUpdates
+        self.updatesListenerQueue.async { [weak self] in
+            self?.updatesListener?(updates)
+        }
     }
 
     private func getEntityReadStorage() -> AnyEntityReadStorage<T>
@@ -117,7 +106,13 @@ class EntityCollectionStateManager<T: Entity>
         return AnyEntityReadStorage(writeState)
     }
 
+    // MARK: - Inner Types
+
+    typealias UpdatesListener = ([EntityUpdate<T>]) -> Void
+
     // MARK: - Private Properties
+
+    private let entityStorage: AnyEntityReadWriteStorage<T>
 
     private var activeStates: Set<EntityCollectionReadState<T>> = []
 
@@ -126,4 +121,6 @@ class EntityCollectionStateManager<T: Entity>
     private let stateLock = Lock()
 
     private let writeLock = Lock()
+
+    private let updatesListenerQueue = DispatchQueue(label: "ru.kolyasev.Harmony.EntityCollectionStateManager.UpdatesListener.queue")
 }

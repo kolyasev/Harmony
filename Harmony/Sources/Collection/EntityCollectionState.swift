@@ -52,8 +52,12 @@ class EntityCollectionReadWriteState<T: Entity>: EntityCollectionReadState<T>, E
 
     // MARK: - Properties
 
-    var hasChanges: Bool {
+    var hasUpdates: Bool {
         return !self.updates.isEmpty
+    }
+
+    var allUpdates: [EntityUpdate<T>] {
+        return Array(self.updates.values)
     }
 
     // MARK: - Functions: Read

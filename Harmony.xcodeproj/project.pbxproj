@@ -31,6 +31,8 @@
 		6647D8C2209F4F4D00E3EF9B /* EntityCollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8C1209F4F4D00E3EF9B /* EntityCollectionStorage.swift */; };
 		6647D8C420A7293D00E3EF9B /* InMemoryEntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8C320A7293D00E3EF9B /* InMemoryEntityStorage.swift */; };
 		6647D8C620A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8C520A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift */; };
+		668F6A1820A9C59D007B7DAD /* EntityUpdatesListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F6A1720A9C59D007B7DAD /* EntityUpdatesListener.swift */; };
+		668F6A1A20A9E0B1007B7DAD /* ViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F6A1920A9E0B1007B7DAD /* ViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		6647D8C1209F4F4D00E3EF9B /* EntityCollectionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionStorage.swift; sourceTree = "<group>"; };
 		6647D8C320A7293D00E3EF9B /* InMemoryEntityStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryEntityStorage.swift; sourceTree = "<group>"; };
 		6647D8C520A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryBaseEntityStorage.swift; sourceTree = "<group>"; };
+		668F6A1720A9C59D007B7DAD /* EntityUpdatesListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityUpdatesListener.swift; sourceTree = "<group>"; };
+		668F6A1920A9E0B1007B7DAD /* ViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 				3562E9BE1FED0F11007E83A6 /* BaseEntityIdentifier.swift */,
 				35BD5FF11FD0299C00E5EADC /* Entity.swift */,
 				3562E9C21FED62B5007E83A6 /* EntityUpdate.swift */,
+				668F6A1720A9C59D007B7DAD /* EntityUpdatesListener.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				35BD60091FD02C0000E5EADC /* HarmonyTests.swift */,
+				668F6A1920A9E0B1007B7DAD /* ViewTests.swift */,
 				35BD600B1FD02C0000E5EADC /* Info.plist */,
 			);
 			path = HarmonyTests;
@@ -368,6 +374,7 @@
 				6647D8C0209D654400E3EF9B /* EntityStorage.swift in Sources */,
 				6647D8C420A7293D00E3EF9B /* InMemoryEntityStorage.swift in Sources */,
 				35BD60131FD03E4200E5EADC /* Database.swift in Sources */,
+				668F6A1820A9C59D007B7DAD /* EntityUpdatesListener.swift in Sources */,
 				35BD60021FD0299C00E5EADC /* TransactionQueue.swift in Sources */,
 				3562E9BF1FED0F11007E83A6 /* BaseEntityIdentifier.swift in Sources */,
 			);
@@ -377,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				668F6A1A20A9E0B1007B7DAD /* ViewTests.swift in Sources */,
 				35BD600A1FD02C0000E5EADC /* HarmonyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
