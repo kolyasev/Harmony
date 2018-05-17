@@ -1,7 +1,7 @@
 
 import Foundation
 
-class EntityCollectionView<T: Entity>
+public class EntityCollectionView<T: Entity>
 {
     // MARK: - Initializer
 
@@ -21,7 +21,7 @@ class EntityCollectionView<T: Entity>
 
     // MARK: - Functions
 
-    func subscribe(block: @escaping SubscriptionBlock) -> SubscriptionToken
+    public func subscribe(block: @escaping SubscriptionBlock) -> SubscriptionToken
     {
         let token = SubscriptionToken()
 
@@ -37,7 +37,7 @@ class EntityCollectionView<T: Entity>
         return token
     }
 
-    func unsubscribe(_ token: SubscriptionToken)
+    public func unsubscribe(_ token: SubscriptionToken)
     {
         self.subscriptions[token.uuid] = nil
     }
@@ -92,9 +92,9 @@ class EntityCollectionView<T: Entity>
 
     // MARK: - Inner Types
 
-    typealias SubscriptionBlock = ([T]) -> Void
+    public typealias SubscriptionBlock = ([T]) -> Void
 
-    struct SubscriptionToken
+    public struct SubscriptionToken
     {
         fileprivate let uuid: UUID = UUID()
     }

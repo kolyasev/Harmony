@@ -1,5 +1,5 @@
 
-protocol EntityReadStorage
+public protocol EntityReadStorage
 {
     // MARK: - Functions: Read
 
@@ -18,7 +18,7 @@ protocol EntityReadStorage
     typealias EntityEnumerator = (EnityType, inout Bool) -> Void
 }
 
-protocol EntityReadWriteStorage: EntityReadStorage
+public protocol EntityReadWriteStorage: EntityReadStorage
 {
     // MARK: - Functions: Write
 
@@ -31,7 +31,7 @@ extension EntityReadWriteStorage
 {
     // MARK: - Functions: Write
 
-    func remove(entity: EnityType)
+    public func remove(entity: EnityType)
     {
         removeEntity(forKey: entity.key)
     }

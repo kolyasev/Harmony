@@ -1,5 +1,5 @@
 
-class EntityCollectionState<T: Entity>
+public class EntityCollectionState<T: Entity>
 {
     // MARK: - Properties
 
@@ -7,10 +7,10 @@ class EntityCollectionState<T: Entity>
 
     // MARK: - Inner Types
 
-    typealias EnityType = T
+    public typealias EnityType = T
 }
 
-class EntityCollectionReadState<T: Entity>: EntityCollectionState<T>, EntityReadStorage
+public class EntityCollectionReadState<T: Entity>: EntityCollectionState<T>, EntityReadStorage
 {
     // MARK: - Initialization
 
@@ -22,17 +22,17 @@ class EntityCollectionReadState<T: Entity>: EntityCollectionState<T>, EntityRead
 
     // MARK: - Functions: Read
 
-    func entity(forKey key: T.Key) -> T?
+    public func entity(forKey key: T.Key) -> T?
     {
         return self.entityStorage.entity(forKey: key)
     }
 
-    func enumerate(keys enumerator: (T.Key, inout Bool) -> Void)
+    public func enumerate(keys enumerator: (T.Key, inout Bool) -> Void)
     {
         self.entityStorage.enumerate(keys: enumerator)
     }
 
-    func enumerate(entities enumerator: (T, inout Bool) -> Void)
+    public func enumerate(entities enumerator: (T, inout Bool) -> Void)
     {
         self.entityStorage.enumerate(entities: enumerator)
     }
@@ -42,7 +42,7 @@ class EntityCollectionReadState<T: Entity>: EntityCollectionState<T>, EntityRead
     private let entityStorage: AnyEntityReadStorage<T>
 }
 
-class EntityCollectionReadWriteState<T: Entity>: EntityCollectionReadState<T>, EntityReadWriteStorage
+public final class EntityCollectionReadWriteState<T: Entity>: EntityCollectionReadState<T>, EntityReadWriteStorage
 {
     // MARK: - Initialization
 
@@ -62,7 +62,7 @@ class EntityCollectionReadWriteState<T: Entity>: EntityCollectionReadState<T>, E
 
     // MARK: - Functions: Read
 
-    override func entity(forKey key: T.Key) -> T?
+    public override func entity(forKey key: T.Key) -> T?
     {
         let entity: T?
 
@@ -77,7 +77,7 @@ class EntityCollectionReadWriteState<T: Entity>: EntityCollectionReadState<T>, E
         return entity
     }
 
-    override func enumerate(keys enumerator: (T.Key, inout Bool) -> Void)
+    public override func enumerate(keys enumerator: (T.Key, inout Bool) -> Void)
     {
         var stop = false
         for case .insert(let entity) in self.updates.values {
@@ -93,7 +93,7 @@ class EntityCollectionReadWriteState<T: Entity>: EntityCollectionReadState<T>, E
         })
     }
 
-    override func enumerate(entities enumerator: (T, inout Bool) -> Void)
+    public override func enumerate(entities enumerator: (T, inout Bool) -> Void)
     {
         var stop = false
         for case .insert(let entity) in self.updates.values {
@@ -111,12 +111,12 @@ class EntityCollectionReadWriteState<T: Entity>: EntityCollectionReadState<T>, E
 
     // MARK: - Functions: Write
 
-    func insert(entity: T)
+    public func insert(entity: T)
     {
         self.updates[entity.key] = .insert(entity: entity)
     }
 
-    func removeEntity(forKey key: T.Key)
+    public func removeEntity(forKey key: T.Key)
     {
         self.updates[key] = .remove(key: key)
     }
@@ -147,7 +147,7 @@ extension EntityCollectionState: Equatable
 {
     // MARK: - Functions
 
-    static func ==(lhs: EntityCollectionState<T>, rhs: EntityCollectionState<T>) -> Bool {
+    public static func ==(lhs: EntityCollectionState<T>, rhs: EntityCollectionState<T>) -> Bool {
         return lhs.sid == rhs.sid
     }
 }
@@ -156,7 +156,7 @@ extension EntityCollectionState: Hashable
 {
     // MARK: - Properties
 
-    var hashValue: Int {
+    public var hashValue: Int {
         return self.sid.hashValue
     }
 }

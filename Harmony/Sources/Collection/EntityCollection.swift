@@ -1,5 +1,5 @@
 
-class EntityCollection<Element: Entity>
+public final class EntityCollection<Element: Entity>
 {
     // MARK: - Initialization
 
@@ -15,18 +15,18 @@ class EntityCollection<Element: Entity>
 
     // MARK: - Functions
 
-    func view<Predicate: EntityPredicate>(_ predicate: Predicate) -> EntityCollectionView<Predicate.Root> where Predicate.Root == Element
+    public func view<Predicate: EntityPredicate>(_ predicate: Predicate) -> EntityCollectionView<Predicate.Root> where Predicate.Root == Element
     {
         return self.viewProvider.view(stateManager: self.stateManager, predicate: predicate)
     }
 
-    func read<Result>(_ block: @escaping (EntityCollectionReadState<Element>) -> Result) -> Result
+    public func read<Result>(_ block: @escaping (EntityCollectionReadState<Element>) -> Result) -> Result
     {
         let transaction = ReadTransaction<Element, Result>(block: block)
         return self.transactionQueue.enqueueSync(transaction: transaction)
     }
 
-    func write<Result>(_ block: @escaping (EntityCollectionReadWriteState<Element>) -> Result) -> Result
+    public func write<Result>(_ block: @escaping (EntityCollectionReadWriteState<Element>) -> Result) -> Result
     {
         let transaction = ReadWriteTransaction<Element, Result>(block: block)
         return self.transactionQueue.enqueueSync(transaction: transaction)
@@ -59,13 +59,13 @@ extension EntityCollection
 {
     // MARK: - Functions
 
-    func asyncRead<Result>(_ block: @escaping (EntityCollectionReadState<Element>) -> Result, completion: ((Result) -> Void)? = nil)
+    public func asyncRead<Result>(_ block: @escaping (EntityCollectionReadState<Element>) -> Result, completion: ((Result) -> Void)? = nil)
     {
         let transaction = ReadTransaction<Element, Result>(block: block)
         self.transactionQueue.enqueueAsync(transaction: transaction, completion: completion)
     }
 
-    func asyncWrite<Result>(_ block: @escaping (EntityCollectionReadWriteState<Element>) -> Result, completion: ((Result) -> Void)? = nil)
+    public func asyncWrite<Result>(_ block: @escaping (EntityCollectionReadWriteState<Element>) -> Result, completion: ((Result) -> Void)? = nil)
     {
         let transaction = ReadWriteTransaction<Element, Result>(block: block)
         return self.transactionQueue.enqueueAsync(transaction: transaction, completion: completion)

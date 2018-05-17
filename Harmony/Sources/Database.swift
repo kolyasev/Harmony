@@ -1,7 +1,7 @@
 
-class Database
+public class Database
 {
-    init(baseEntityStorage: BaseEntityStorage)
+    public init(baseEntityStorage: BaseEntityStorage)
     {
         self.baseEntityStorage = baseEntityStorage
         self.collectionProvider = EntityCollectionProvider(baseEntityStorage: self.baseEntityStorage)
@@ -10,12 +10,12 @@ class Database
 //        self.viewProvider = EntityCollectionViewProvider(stateManager: self.stateManager)
     }
 
-    func collection<T>(_ type: T.Type) -> EntityCollection<T>
+    public func collection<T>(_ type: T.Type) -> EntityCollection<T>
     {
         return self.collectionProvider.collection(type)
     }
 
-    func view<Predicate: EntityPredicate>(_ type: Predicate.Root.Type, predicate: Predicate) -> EntityCollectionView<Predicate.Root>
+    public func view<Predicate: EntityPredicate>(_ type: Predicate.Root.Type, predicate: Predicate) -> EntityCollectionView<Predicate.Root>
     {
         return collection(type).view(predicate)
     }

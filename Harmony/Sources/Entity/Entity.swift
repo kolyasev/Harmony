@@ -1,11 +1,12 @@
 
-protocol Property: Equatable { }
+public protocol Property: Equatable { }
 
 extension String: Property { }
 extension Int: Property { }
 
 struct AnyBaseEntity: BaseEntity
 {
+    
     init(_ entity: BaseEntity) {
         self.entity = entity
     }
@@ -25,12 +26,12 @@ struct AnyBaseEntity: BaseEntity
     private let entity: BaseEntity
 }
 
-protocol BaseEntity: Codable
+public protocol BaseEntity: Codable
 {
     var identifier: BaseEntityIdentifier { get }
 }
 
-protocol Entity: BaseEntity, Property
+public protocol Entity: BaseEntity, Property
 {
     var key: Key { get }
 
@@ -39,11 +40,11 @@ protocol Entity: BaseEntity, Property
 
 extension Entity
 {
-    var identifier: BaseEntityIdentifier {
+    public var identifier: BaseEntityIdentifier {
         return BaseEntityIdentifier(type: type(of: self), stringKey: self.key.description)
     }
 }
 
-protocol EntityKey: LosslessStringConvertible, Hashable { }
+public protocol EntityKey: LosslessStringConvertible, Hashable { }
 
 extension String: EntityKey { }
