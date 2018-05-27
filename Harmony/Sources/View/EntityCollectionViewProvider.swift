@@ -31,41 +31,38 @@ class EntityCollectionViewProvider<Element: Entity>
         }
     }
 
-    func view<Predicate: EntityPredicate>(stateManager: EntityCollectionStateManager<Element>, predicate: Predicate) -> EntityCollectionView<Predicate.Root> where Predicate.Root == Element
+    func view<P: Predicate>(stateManager: EntityCollectionStateManager<Element>, predicate: P) -> EntityCollectionView<P.Element> where P.Element == Element
     {
-        return makeView(stateManager: stateManager, predicate: predicate)
+        let identifier = AnyPredicate(predicate)
+        let view: EntityCollectionView<Element>
 
-        // TODO: Reuse views
-//        let identifier = ObjectIdentifier(T.self)
-//        let view: EntityCollectionView<T>
-//
-//        if let existingView = self.views[identifier] as? EntityCollectionView<T>
-//        {
-//            view = existingView
-//        }
-//        else {
-//            view = makeView()
-//            self.views[identifier] = view
-//        }
-//
-//        return view
+        if let existingView = self.views[identifier]?.getValue()
+        {
+            view = existingView
+        }
+        else {
+            view = makeView(stateManager: stateManager, predicate: predicate)
+            self.views[identifier] = WeakBox(view)
+        }
+
+        return view
     }
 
     // MARK: - Private Functions
 
-    private func makeView<Predicate: EntityPredicate>(stateManager: EntityCollectionStateManager<Element>, predicate: Predicate) -> EntityCollectionView<Predicate.Root> where Predicate.Root == Element
+    private func makeView<P: Predicate>(stateManager: EntityCollectionStateManager<Element>, predicate: P) -> EntityCollectionView<P.Element> where P.Element == Element
     {
         let view = stateManager.read { state in
             return EntityCollectionView(predicate: predicate, storage: state)
         }
 
-        let key = ObjectIdentifier(view)
-        self.views[key] = WeakBox(view)
+        let identifier = AnyPredicate(predicate)
+        self.views[identifier] = WeakBox(view)
 
         return view
     }
 
     // MARK: - Private Properties
 
-    private var views: [ObjectIdentifier: WeakBox<EntityCollectionView<Element>>] = [:]
+    private var views: [AnyPredicate<Element>: WeakBox<EntityCollectionView<Element>>] = [:]
 }

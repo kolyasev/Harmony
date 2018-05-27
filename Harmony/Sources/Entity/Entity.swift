@@ -33,9 +33,17 @@ public protocol BaseEntity: Codable
 
 public protocol Entity: BaseEntity, Property
 {
-    var key: Key { get }
-
     associatedtype Key: EntityKey
+
+    static var keyPath: KeyPath<Self, Key> { get }
+}
+
+extension Entity {
+
+    var key: Key {
+        return self[keyPath: Self.keyPath]
+    }
+
 }
 
 extension Entity
@@ -48,3 +56,4 @@ extension Entity
 public protocol EntityKey: LosslessStringConvertible, Hashable { }
 
 extension String: EntityKey { }
+extension Int: EntityKey { }

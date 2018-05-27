@@ -15,7 +15,7 @@ public class Database
         return self.collectionProvider.collection(type)
     }
 
-    public func view<Predicate: EntityPredicate>(_ type: Predicate.Root.Type, predicate: Predicate) -> EntityCollectionView<Predicate.Root>
+    public func view<P: Predicate>(_ type: P.Element.Type, predicate: P) -> EntityCollectionView<P.Element>
     {
         return collection(type).view(predicate)
     }

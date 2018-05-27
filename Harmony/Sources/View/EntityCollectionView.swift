@@ -5,18 +5,12 @@ public class EntityCollectionView<T: Entity>
 {
     // MARK: - Initializer
 
-    init<P: EntityPredicate, Storage: EntityReadStorage>(predicate: P, storage: Storage) where P.Root == T, Storage.EnityType == T
+    init<P: Predicate, Storage: EntityReadStorage>(predicate: P, storage: Storage) where P.Element == T, Storage.EnityType == T
     {
-        self.predicate = AnyEntityPredicate(predicate)
+        self.predicate = AnyPredicate(predicate)
         self.queue.async {
             self.update(with: storage)
         }
-    }
-
-    // MARK: - Properties
-
-    var identifier: String {
-        return String(describing: T.self) // + self.predicate.identifier
     }
 
     // MARK: - Functions
@@ -65,7 +59,9 @@ public class EntityCollectionView<T: Entity>
             switch update
             {
                 case .insert(let entity):
-                    self.entities[entity.key] = entity
+                    if self.predicate.evaluate(entity) {
+                        self.entities[entity.key] = entity
+                    }
 
                 case .remove(let key):
                     self.entities[key] = nil
@@ -103,7 +99,7 @@ public class EntityCollectionView<T: Entity>
 
     private var entities: [T.Key: T] = [:]
 
-    private let predicate: AnyEntityPredicate<T>
+    private let predicate: AnyPredicate<T>
 
     private var subscriptions: [UUID: SubscriptionBlock] = [:]
 

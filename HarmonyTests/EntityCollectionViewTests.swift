@@ -3,7 +3,7 @@ import XCTest
 
 @testable import Harmony
 
-class ViewTests: XCTestCase
+class EntityCollectionViewTests: XCTestCase
 {
     var db: Database!
     var storage: BaseEntityStorage!
@@ -15,11 +15,25 @@ class ViewTests: XCTestCase
         self.db = Database(baseEntityStorage: self.storage)
     }
 
+    func testShouldReuseViews()
+    {
+        let view1 = self.db.view(ChildModel.self, predicate: \.name == "child")
+        let view2 = self.db.view(ChildModel.self, predicate: \.name == "child")
+
+        XCTAssert(view1 === view2)
+    }
+
+    func testShouldNotReuseViews()
+    {
+        let view1 = self.db.view(ChildModel.self, predicate: \.name == "child 1")
+        let view2 = self.db.view(ChildModel.self, predicate: \.name == "child 2")
+
+        XCTAssert(view1 !== view2)
+    }
+
     func testViewUpdate()
     {
-        let view = self.db.view(ChildModel.self, predicate: BlockEntityPredicate { entity in
-            return entity.name == "child"
-        })
+        let view = self.db.view(ChildModel.self, predicate: \.name == "child")
 
         var entities: [ChildModel]?
         var eventsCount = 0
@@ -34,11 +48,10 @@ class ViewTests: XCTestCase
             }
         }
 
-        let entity = ChildModel(id: "5", name: "child")
         let collection = self.db.collection(ChildModel.self)
-
         collection.write { state in
-            state.insert(entity: entity)
+            state.insert(entity: ChildModel(id: "1", name: "child"))
+            state.insert(entity: ChildModel(id: "2", name: "child 2"))
         }
 
         wait(for: [expectation], timeout: 1.0)

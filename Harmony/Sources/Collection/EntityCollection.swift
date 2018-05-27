@@ -15,7 +15,7 @@ public final class EntityCollection<Element: Entity>
 
     // MARK: - Functions
 
-    public func view<Predicate: EntityPredicate>(_ predicate: Predicate) -> EntityCollectionView<Predicate.Root> where Predicate.Root == Element
+    public func view<P: Predicate>(_ predicate: P) -> EntityCollectionView<P.Element> where P.Element == Element
     {
         return self.viewProvider.view(stateManager: self.stateManager, predicate: predicate)
     }
@@ -97,4 +97,47 @@ extension EntityCollection: EntityUpdatesListener
     // MARK: - Inner Types
 
     typealias EntityType = Element
+}
+
+extension EntityCollection
+{
+    // MARK: - Functions: Read
+
+    public func entity(forKey key: Element.Key) -> Element?
+    {
+        return read { state in
+            return state.entity(forKey: key)
+        }
+    }
+
+    public func enumerate(keys enumerator: @escaping (Element.Key, inout Bool) -> Void)
+    {
+        return read { state in
+            return state.enumerate(keys: enumerator)
+        }
+    }
+
+    public func enumerate(entities enumerator: @escaping (Element, inout Bool) -> Void)
+    {
+        return read { state in
+            return state.enumerate(entities: enumerator)
+        }
+    }
+
+    // MARK: - Functions: Write
+
+    public func insert(entity: Element)
+    {
+        write { state in
+            state.insert(entity: entity)
+        }
+    }
+
+    public func removeEntity(forKey key: Element.Key)
+    {
+        write { state in
+            state.removeEntity(forKey: key)
+        }
+    }
+
 }
