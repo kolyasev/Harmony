@@ -13,12 +13,19 @@ public final class EntityCollection<Element: Entity>
         }
     }
 
-    // MARK: - Functions
+    // MARK: - Functions: Views
 
     public func view<P: Predicate>(_ predicate: P) -> EntityCollectionView<P.Element> where P.Element == Element
     {
-        return self.viewProvider.view(stateManager: self.stateManager, predicate: predicate)
+        return self.collectionViewProvider.view(stateManager: self.stateManager, predicate: predicate)
     }
+
+    public func view(_ key: Element.Key) -> EntityView<Element>
+    {
+        return self.viewProvider.view(stateManager: self.stateManager, key: key)
+    }
+
+    // MARK: - Functions: Read / Write
 
     public func read<Result>(_ block: @escaping (EntityCollectionReadState<Element>) -> Result) -> Result
     {
@@ -41,8 +48,15 @@ public final class EntityCollection<Element: Entity>
 
     private func handleEntityUpdates(_ entityUpdates: [EntityUpdate<Element>])
     {
-        self.viewProvider.enumerateViews { view in
+        self.collectionViewProvider.enumerateViews { view in
             view.updateEntities(with: entityUpdates)
+        }
+
+        for entityUpdate in entityUpdates
+        {
+            if let view = self.viewProvider.existingView(for: entityUpdate.key) {
+                view.updateEntity(with: entityUpdate)
+            }
         }
     }
 
@@ -52,7 +66,9 @@ public final class EntityCollection<Element: Entity>
 
     private let stateManager: EntityCollectionStateManager<Element>
 
-    private let viewProvider = EntityCollectionViewProvider<Element>()
+    private let collectionViewProvider = EntityCollectionViewProvider<Element>()
+
+    private let viewProvider = EntityViewProvider<Element>()
 }
 
 extension EntityCollection

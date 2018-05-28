@@ -7,6 +7,17 @@ enum EntityUpdate<T: Entity>
 
 extension EntityUpdate
 {
+    var key: T.Key {
+        switch self
+        {
+            case .insert(let entity):
+                return entity.key
+
+            case .remove(let key):
+                return key
+        }
+    }
+
     var entity: T? {
         guard case .insert(let entity) = self else {
             return nil

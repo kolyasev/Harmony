@@ -20,6 +20,11 @@ public class Database
         return collection(type).view(predicate)
     }
 
+    public func view<E: Entity>(_ type: E.Type, key: E.Key) -> EntityView<E>
+    {
+        return collection(type).view(key)
+    }
+
     // FIXME: Not implemented
 //    func read<T: Entity, R>(_ block: (DatabaseState) -> R) -> R
 //    {

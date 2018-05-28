@@ -26,6 +26,11 @@
 		35BD60151FD0403100E5EADC /* EntityCollectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD60141FD0403100E5EADC /* EntityCollectionState.swift */; };
 		35BD60191FD0657300E5EADC /* DatabaseSID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD60181FD0657300E5EADC /* DatabaseSID.swift */; };
 		35BD601C1FD1595B00E5EADC /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD601B1FD1595B00E5EADC /* Lock.swift */; };
+		661935B220BAE6D200783EA8 /* EntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661935B120BAE6D200783EA8 /* EntityView.swift */; };
+		661935B420BAE8D500783EA8 /* EntityViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661935B320BAE8D500783EA8 /* EntityViewProvider.swift */; };
+		661935B720BAE97500783EA8 /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661935B620BAE97500783EA8 /* WeakBox.swift */; };
+		661935B920BAFFBD00783EA8 /* ObserverCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661935B820BAFFBD00783EA8 /* ObserverCollection.swift */; };
+		661935BB20BB095200783EA8 /* EntityViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661935BA20BB095200783EA8 /* EntityViewTests.swift */; };
 		6647D8BD209CA6AD00E3EF9B /* EntityCollectionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8BC209CA6AD00E3EF9B /* EntityCollectionStateManager.swift */; };
 		6647D8C0209D654400E3EF9B /* EntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8BF209D654400E3EF9B /* EntityStorage.swift */; };
 		6647D8C2209F4F4D00E3EF9B /* EntityCollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8C1209F4F4D00E3EF9B /* EntityCollectionStorage.swift */; };
@@ -68,6 +73,11 @@
 		35BD60141FD0403100E5EADC /* EntityCollectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionState.swift; sourceTree = "<group>"; };
 		35BD60181FD0657300E5EADC /* DatabaseSID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSID.swift; sourceTree = "<group>"; };
 		35BD601B1FD1595B00E5EADC /* Lock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lock.swift; sourceTree = "<group>"; };
+		661935B120BAE6D200783EA8 /* EntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityView.swift; sourceTree = "<group>"; };
+		661935B320BAE8D500783EA8 /* EntityViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityViewProvider.swift; sourceTree = "<group>"; };
+		661935B620BAE97500783EA8 /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
+		661935B820BAFFBD00783EA8 /* ObserverCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverCollection.swift; sourceTree = "<group>"; };
+		661935BA20BB095200783EA8 /* EntityViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityViewTests.swift; sourceTree = "<group>"; };
 		6647D8BC209CA6AD00E3EF9B /* EntityCollectionStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionStateManager.swift; sourceTree = "<group>"; };
 		6647D8BF209D654400E3EF9B /* EntityStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityStorage.swift; sourceTree = "<group>"; };
 		6647D8C1209F4F4D00E3EF9B /* EntityCollectionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionStorage.swift; sourceTree = "<group>"; };
@@ -130,6 +140,8 @@
 		3562E9BD1FEC120F007E83A6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				661935B120BAE6D200783EA8 /* EntityView.swift */,
+				661935B320BAE8D500783EA8 /* EntityViewProvider.swift */,
 				35BD5FEE1FD0299C00E5EADC /* EntityCollectionView.swift */,
 				35BD5FEF1FD0299C00E5EADC /* EntityCollectionViewProvider.swift */,
 			);
@@ -183,7 +195,7 @@
 				3562E9BD1FEC120F007E83A6 /* View */,
 				6647D8BE209D619100E3EF9B /* Storage */,
 				661935B020BA4C8600783EA8 /* Predicate */,
-				35ECD84E1FF54C92001B3054 /* Cache */,
+				661935B520BAE95F00783EA8 /* Helpers */,
 				35BD60121FD03E4200E5EADC /* Database.swift */,
 				35BD60181FD0657300E5EADC /* DatabaseSID.swift */,
 			);
@@ -195,6 +207,7 @@
 			children = (
 				35BD60091FD02C0000E5EADC /* HarmonyTests.swift */,
 				668F6A1920A9E0B1007B7DAD /* EntityCollectionViewTests.swift */,
+				661935BA20BB095200783EA8 /* EntityViewTests.swift */,
 				35BD600B1FD02C0000E5EADC /* Info.plist */,
 			);
 			path = HarmonyTests;
@@ -208,19 +221,21 @@
 			path = Libraries;
 			sourceTree = "<group>";
 		};
-		35ECD84E1FF54C92001B3054 /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cache;
-			sourceTree = "<group>";
-		};
 		661935B020BA4C8600783EA8 /* Predicate */ = {
 			isa = PBXGroup;
 			children = (
 				354299001FF2877600D1CEE7 /* Predicate.swift */,
 			);
 			path = Predicate;
+			sourceTree = "<group>";
+		};
+		661935B520BAE95F00783EA8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				661935B620BAE97500783EA8 /* WeakBox.swift */,
+				661935B820BAFFBD00783EA8 /* ObserverCollection.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		6647D8BE209D619100E3EF9B /* Storage */ = {
@@ -371,14 +386,18 @@
 				3562E9C31FED62B5007E83A6 /* EntityUpdate.swift in Sources */,
 				6647D8C620A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift in Sources */,
 				35BD601C1FD1595B00E5EADC /* Lock.swift in Sources */,
+				661935B220BAE6D200783EA8 /* EntityView.swift in Sources */,
 				6647D8BD209CA6AD00E3EF9B /* EntityCollectionStateManager.swift in Sources */,
 				35BD60151FD0403100E5EADC /* EntityCollectionState.swift in Sources */,
 				35BD5FF91FD0299C00E5EADC /* EntityCollection.swift in Sources */,
 				35BD5FFE1FD0299C00E5EADC /* Entity.swift in Sources */,
 				6647D8C2209F4F4D00E3EF9B /* EntityCollectionStorage.swift in Sources */,
+				661935B420BAE8D500783EA8 /* EntityViewProvider.swift in Sources */,
+				661935B720BAE97500783EA8 /* WeakBox.swift in Sources */,
 				35BD5FFA1FD0299C00E5EADC /* EntityCollectionProvider.swift in Sources */,
 				35BD5FF71FD0299C00E5EADC /* BaseEntityStorage.swift in Sources */,
 				35BD5FF61FD0299C00E5EADC /* TestModel.swift in Sources */,
+				661935B920BAFFBD00783EA8 /* ObserverCollection.swift in Sources */,
 				6647D8C0209D654400E3EF9B /* EntityStorage.swift in Sources */,
 				6647D8C420A7293D00E3EF9B /* InMemoryEntityStorage.swift in Sources */,
 				35BD60131FD03E4200E5EADC /* Database.swift in Sources */,
@@ -392,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				661935BB20BB095200783EA8 /* EntityViewTests.swift in Sources */,
 				668F6A1A20A9E0B1007B7DAD /* EntityCollectionViewTests.swift in Sources */,
 				35BD600A1FD02C0000E5EADC /* HarmonyTests.swift in Sources */,
 			);

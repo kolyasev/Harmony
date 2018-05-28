@@ -3,18 +3,18 @@ protocol EntityUpdatesListener: class
 {
     // MARK: - Functions
 
-    func updateEntities(with entityUpdates: [EntityUpdate<EntityType>])
+    func updateEntities(with entityUpdates: [EntityUpdate<Element>])
 
     // MARK: - Inner Types
 
-    associatedtype EntityType: Entity
+    associatedtype Element: Entity
 }
 
 final class AnyEntityUpdatesListener<T: Entity>: EntityUpdatesListener
 {
     // MARK: - Initialization
 
-    init<Listener: EntityUpdatesListener>(_ updatesListener: Listener) where Listener.EntityType == T {
+    init<Listener: EntityUpdatesListener>(_ updatesListener: Listener) where Listener.Element == T {
         self._didUpdateEntitiesWith = { updates in updatesListener.updateEntities(with: updates) }
     }
 
@@ -26,7 +26,7 @@ final class AnyEntityUpdatesListener<T: Entity>: EntityUpdatesListener
 
     // MARK: - Inner Types
 
-    typealias EntityType = T
+    typealias Element = T
 
     // MARK: - Private Properties
 

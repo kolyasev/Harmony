@@ -1,14 +1,14 @@
 
 import Foundation
 
-public class EntityCollectionView<T: Entity>
+public final class EntityCollectionView<Element: Entity>
 {
     // MARK: - Initializer
 
-    init<P: Predicate, Storage: EntityReadStorage>(predicate: P, storage: Storage) where P.Element == T, Storage.EnityType == T
+    init<P: Predicate, Storage: EntityReadStorage>(predicate: P, storage: Storage) where P.Element == Element, Storage.EnityType == Element
     {
         self.predicate = AnyPredicate(predicate)
-        self.queue.async {
+        self.queue.sync {
             self.update(with: storage)
         }
     }
@@ -17,9 +17,7 @@ public class EntityCollectionView<T: Entity>
 
     public func subscribe(block: @escaping SubscriptionBlock) -> SubscriptionToken
     {
-        let token = SubscriptionToken()
-
-        self.subscriptions[token.uuid] = block
+        let token = self.observerCollection.subscribe(parent: self, callback: block)
 
         self.queue.async { [weak self] in
             guard let instance = self else { return }
@@ -31,16 +29,11 @@ public class EntityCollectionView<T: Entity>
         return token
     }
 
-    public func unsubscribe(_ token: SubscriptionToken)
-    {
-        self.subscriptions[token.uuid] = nil
-    }
-
     // MARK: - Private Functions
 
-    private func update<Storage: EntityReadStorage>(with storage: Storage) where Storage.EnityType == T
+    private func update<Storage: EntityReadStorage>(with storage: Storage) where Storage.EnityType == Element
     {
-        var entities: [T.Key: T] = [:]
+        var entities: [Element.Key: Element] = [:]
 
         storage.enumerate(entities: { entity, stop in
             if self.predicate.evaluate(entity) {
@@ -52,7 +45,7 @@ public class EntityCollectionView<T: Entity>
         didUpdateEntities()
     }
 
-    private func update(with entityUpdates: [EntityUpdate<T>])
+    private func update(with entityUpdates: [EntityUpdate<Element>])
     {
         for update in entityUpdates
         {
@@ -74,12 +67,12 @@ public class EntityCollectionView<T: Entity>
     private func didUpdateEntities()
     {
         let entities = Array(self.entities.values)
-        for subscription in self.subscriptions.values {
-            dispatch(entities: entities, to: subscription)
+        self.observerCollection.each { callback in
+            self.dispatch(entities: entities, to: callback)
         }
     }
 
-    private func dispatch(entities: [T], to subscription: @escaping SubscriptionBlock)
+    private func dispatch(entities: [Element], to subscription: @escaping SubscriptionBlock)
     {
         DispatchQueue.global().async {
             subscription(entities)
@@ -88,20 +81,15 @@ public class EntityCollectionView<T: Entity>
 
     // MARK: - Inner Types
 
-    public typealias SubscriptionBlock = ([T]) -> Void
-
-    public struct SubscriptionToken
-    {
-        fileprivate let uuid: UUID = UUID()
-    }
+    public typealias SubscriptionBlock = ([Element]) -> Void
 
     // MARK: - Private Properties
 
-    private var entities: [T.Key: T] = [:]
+    private var entities: [Element.Key: Element] = [:]
 
-    private let predicate: AnyPredicate<T>
+    private let predicate: AnyPredicate<Element>
 
-    private var subscriptions: [UUID: SubscriptionBlock] = [:]
+    private var observerCollection = ObserverCollection<EntityCollectionView<Element>, [Element]>()
 
     private let queue = DispatchQueue(label: "ru.kolyasev.Harmony.EntityCollectionView.queue")
 }
@@ -110,14 +98,10 @@ extension EntityCollectionView: EntityUpdatesListener
 {
     // MARK: - Functions
 
-    func updateEntities(with entityUpdates: [EntityUpdate<T>])
+    func updateEntities(with entityUpdates: [EntityUpdate<Element>])
     {
         self.queue.async { [weak self] in
             self?.update(with: entityUpdates)
         }
     }
-
-    // MARK: - Inner Types
-
-    typealias EntityType = T
 }
