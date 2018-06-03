@@ -14,8 +14,10 @@ class ObserverCollection<Parent, Value>
     {
         for observer in self.observers
         {
-            if let observer = observer.getValue() {
-                block(observer.callback)
+            if let observer = observer.getValue(),
+               let callback = observer.callback
+            {
+                block(callback)
             }
         }
     }
@@ -29,7 +31,13 @@ class ObserverCollection<Parent, Value>
     private var observers: [WeakBox<Subscription<Parent, Value>>] = []
 }
 
-public class SubscriptionToken {}
+public protocol SubscriptionToken: class {
+
+    // MARK: - Functions
+
+    func invalidate()
+
+}
 
 final class Subscription<Parent, Value>: SubscriptionToken
 {
@@ -43,9 +51,17 @@ final class Subscription<Parent, Value>: SubscriptionToken
 
     // MARK: - Properties
 
-    let parent: Parent
+    private(set) var parent: Parent?
 
-    let callback: Callback
+    private(set) var callback: Callback?
+
+    // MARK: - Functions
+
+    func invalidate()
+    {
+        self.parent = nil
+        self.callback = nil
+    }
 
     // MARK: - Inner Types
 
