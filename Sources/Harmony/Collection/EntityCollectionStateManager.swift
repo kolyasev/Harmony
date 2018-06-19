@@ -16,24 +16,24 @@ class EntityCollectionStateManager<T: Entity>
 
     // MARK: - Functions
 
-    func read<R>(_ block: (EntityCollectionReadState<T>) -> R) -> R
+    func read<R>(_ block: (EntityCollectionReadState<T>) throws -> R) throws -> R
     {
-        return perform(block: block, in: makeReadState())
+        return try perform(block: block, in: makeReadState())
     }
 
-    func write<R>(_ block: (EntityCollectionReadWriteState<T>) -> R) -> R
+    func write<R>(_ block: (EntityCollectionReadWriteState<T>) throws -> R) throws -> R
     {
-        return self.writeLock.withCriticalScope {
-            return perform(block: block, in: makeReadWriteState())
+        return try self.writeLock.withCriticalScope {
+            return try perform(block: block, in: makeReadWriteState())
         }
     }
 
     // MARK: - Private Functions
 
-    private func perform<State: EntityCollectionReadState<T>, Result>(block: (State) -> Result, in state: State) -> Result
+    private func perform<State: EntityCollectionReadState<T>, Result>(block: (State) throws -> Result, in state: State) throws -> Result
     {
-        let result = block(state)
-        commit(state: state)
+        let result = try block(state)
+        try commit(state: state)
         return result
     }
 
@@ -55,9 +55,9 @@ class EntityCollectionStateManager<T: Entity>
         }
     }
 
-    private func commit(state: EntityCollectionReadState<T>)
+    private func commit(state: EntityCollectionReadState<T>) throws
     {
-        return self.stateLock.withCriticalScope {
+        return try self.stateLock.withCriticalScope {
             guard let state = self.activeStates.remove(state) else {
                 fatalError("Unexpected database state.")
             }
@@ -68,7 +68,7 @@ class EntityCollectionStateManager<T: Entity>
                 addWriteState(readWriteState)
             }
 
-            saveWriteStatesIfNeeded()
+            try saveWriteStatesIfNeeded()
         }
     }
 
@@ -78,14 +78,14 @@ class EntityCollectionStateManager<T: Entity>
         handleEntityUpdates(for: state)
     }
 
-    private func saveWriteStatesIfNeeded()
+    private func saveWriteStatesIfNeeded() throws
     {
         guard self.activeStates.isEmpty else { return }
 
         // There is no other read or write transactions
         // We able to write states to entity storage
         for state in self.writeStates {
-            state.writeChanges(to: self.entityStorage)
+            try state.writeChanges(to: self.entityStorage)
         }
         self.writeStates = []
     }

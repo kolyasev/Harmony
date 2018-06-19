@@ -7,37 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		354299011FF2877600D1CEE7 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354299001FF2877600D1CEE7 /* Predicate.swift */; };
-		3562E9BF1FED0F11007E83A6 /* BaseEntityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3562E9BE1FED0F11007E83A6 /* BaseEntityIdentifier.swift */; };
-		3562E9C31FED62B5007E83A6 /* EntityUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3562E9C21FED62B5007E83A6 /* EntityUpdate.swift */; };
-		35BD5FE11FD0299200E5EADC /* DataFlow.h in Headers */ = {isa = PBXBuildFile; fileRef = 35BD5FDF1FD0299200E5EADC /* DataFlow.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35BD5FF61FD0299C00E5EADC /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FE81FD0299C00E5EADC /* TestModel.swift */; };
-		35BD5FF71FD0299C00E5EADC /* BaseEntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FEA1FD0299C00E5EADC /* BaseEntityStorage.swift */; };
-		35BD5FF91FD0299C00E5EADC /* EntityCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FEC1FD0299C00E5EADC /* EntityCollection.swift */; };
-		35BD5FFA1FD0299C00E5EADC /* EntityCollectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FED1FD0299C00E5EADC /* EntityCollectionProvider.swift */; };
-		35BD5FFB1FD0299C00E5EADC /* EntityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FEE1FD0299C00E5EADC /* EntityCollectionView.swift */; };
-		35BD5FFC1FD0299C00E5EADC /* EntityCollectionViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FEF1FD0299C00E5EADC /* EntityCollectionViewProvider.swift */; };
-		35BD5FFE1FD0299C00E5EADC /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FF11FD0299C00E5EADC /* Entity.swift */; };
-		35BD60011FD0299C00E5EADC /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FF41FD0299C00E5EADC /* Transaction.swift */; };
-		35BD60021FD0299C00E5EADC /* TransactionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD5FF51FD0299C00E5EADC /* TransactionQueue.swift */; };
 		35BD600A1FD02C0000E5EADC /* HarmonyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD60091FD02C0000E5EADC /* HarmonyTests.swift */; };
 		35BD600C1FD02C0000E5EADC /* Harmony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35BD5FDC1FD0299200E5EADC /* Harmony.framework */; };
-		35BD60131FD03E4200E5EADC /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD60121FD03E4200E5EADC /* Database.swift */; };
-		35BD60151FD0403100E5EADC /* EntityCollectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD60141FD0403100E5EADC /* EntityCollectionState.swift */; };
-		35BD60191FD0657300E5EADC /* DatabaseSID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD60181FD0657300E5EADC /* DatabaseSID.swift */; };
-		35BD601C1FD1595B00E5EADC /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BD601B1FD1595B00E5EADC /* Lock.swift */; };
-		661935B220BAE6D200783EA8 /* EntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661935B120BAE6D200783EA8 /* EntityView.swift */; };
-		661935B420BAE8D500783EA8 /* EntityViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661935B320BAE8D500783EA8 /* EntityViewProvider.swift */; };
-		661935B720BAE97500783EA8 /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661935B620BAE97500783EA8 /* WeakBox.swift */; };
-		661935B920BAFFBD00783EA8 /* ObserverCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661935B820BAFFBD00783EA8 /* ObserverCollection.swift */; };
 		661935BB20BB095200783EA8 /* EntityViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661935BA20BB095200783EA8 /* EntityViewTests.swift */; };
-		6647D8BD209CA6AD00E3EF9B /* EntityCollectionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8BC209CA6AD00E3EF9B /* EntityCollectionStateManager.swift */; };
-		6647D8C0209D654400E3EF9B /* EntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8BF209D654400E3EF9B /* EntityStorage.swift */; };
-		6647D8C2209F4F4D00E3EF9B /* EntityCollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8C1209F4F4D00E3EF9B /* EntityCollectionStorage.swift */; };
-		6647D8C420A7293D00E3EF9B /* InMemoryEntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8C320A7293D00E3EF9B /* InMemoryEntityStorage.swift */; };
-		6647D8C620A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647D8C520A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift */; };
-		668F6A1820A9C59D007B7DAD /* EntityUpdatesListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F6A1720A9C59D007B7DAD /* EntityUpdatesListener.swift */; };
+		6645EAA620D628DB00E76894 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6645EAA520D628DB00E76894 /* SQLite.framework */; };
 		668F6A1A20A9E0B1007B7DAD /* EntityCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F6A1920A9E0B1007B7DAD /* EntityCollectionViewTests.swift */; };
+		66FC494020D646BD00E60E1F /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC491820D646BD00E60E1F /* TestModel.swift */; };
+		66FC494120D646BD00E60E1F /* TransactionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC491B20D646BD00E60E1F /* TransactionQueue.swift */; };
+		66FC494220D646BD00E60E1F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC491C20D646BD00E60E1F /* Transaction.swift */; };
+		66FC494320D646BD00E60E1F /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC491E20D646BD00E60E1F /* Predicate.swift */; };
+		66FC494420D646BD00E60E1F /* EntityCollectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492020D646BD00E60E1F /* EntityCollectionProvider.swift */; };
+		66FC494520D646BD00E60E1F /* EntityCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492120D646BD00E60E1F /* EntityCollection.swift */; };
+		66FC494620D646BD00E60E1F /* EntityCollectionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492220D646BD00E60E1F /* EntityCollectionStateManager.swift */; };
+		66FC494720D646BD00E60E1F /* EntityCollectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492320D646BD00E60E1F /* EntityCollectionState.swift */; };
+		66FC494820D646BD00E60E1F /* EntityUpdatesListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492520D646BD00E60E1F /* EntityUpdatesListener.swift */; };
+		66FC494920D646BD00E60E1F /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492620D646BD00E60E1F /* Entity.swift */; };
+		66FC494A20D646BD00E60E1F /* BaseEntityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492720D646BD00E60E1F /* BaseEntityIdentifier.swift */; };
+		66FC494B20D646BD00E60E1F /* EntityUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492820D646BD00E60E1F /* EntityUpdate.swift */; };
+		66FC494C20D646BD00E60E1F /* EntityCollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492A20D646BD00E60E1F /* EntityCollectionStorage.swift */; };
+		66FC494D20D646BD00E60E1F /* InMemoryBaseEntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492B20D646BD00E60E1F /* InMemoryBaseEntityStorage.swift */; };
+		66FC494E20D646BD00E60E1F /* EntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492C20D646BD00E60E1F /* EntityStorage.swift */; };
+		66FC494F20D646BD00E60E1F /* BaseEntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492D20D646BD00E60E1F /* BaseEntityStorage.swift */; };
+		66FC495020D646BD00E60E1F /* InMemoryEntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492E20D646BD00E60E1F /* InMemoryEntityStorage.swift */; };
+		66FC495120D646BD00E60E1F /* SQLIteBaseEntityStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC492F20D646BD00E60E1F /* SQLIteBaseEntityStorage.swift */; };
+		66FC495220D646BD00E60E1F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC493020D646BD00E60E1F /* Database.swift */; };
+		66FC495320D646BD00E60E1F /* EntityViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC493220D646BD00E60E1F /* EntityViewProvider.swift */; };
+		66FC495420D646BD00E60E1F /* EntityCollectionViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC493320D646BD00E60E1F /* EntityCollectionViewProvider.swift */; };
+		66FC495520D646BD00E60E1F /* EntityCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC493420D646BD00E60E1F /* EntityCollectionView.swift */; };
+		66FC495620D646BD00E60E1F /* EntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC493520D646BD00E60E1F /* EntityView.swift */; };
+		66FC495720D646BD00E60E1F /* DatabaseSID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC493720D646BD00E60E1F /* DatabaseSID.swift */; };
+		66FC495920D646BE00E60E1F /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC493A20D646BD00E60E1F /* WeakBox.swift */; };
+		66FC495A20D646BE00E60E1F /* ObserverCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC493B20D646BD00E60E1F /* ObserverCollection.swift */; };
+		66FC495B20D646BE00E60E1F /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC493D20D646BD00E60E1F /* Lock.swift */; };
+		66FC495C20D646BE00E60E1F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66FC493E20D646BD00E60E1F /* Info.plist */; };
+		66FC495D20D646BE00E60E1F /* DataFlow.h in Headers */ = {isa = PBXBuildFile; fileRef = 66FC493F20D646BD00E60E1F /* DataFlow.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,40 +54,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		354299001FF2877600D1CEE7 /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
-		3562E9BE1FED0F11007E83A6 /* BaseEntityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEntityIdentifier.swift; sourceTree = "<group>"; };
-		3562E9C21FED62B5007E83A6 /* EntityUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityUpdate.swift; sourceTree = "<group>"; };
 		35BD5FDC1FD0299200E5EADC /* Harmony.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Harmony.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35BD5FDF1FD0299200E5EADC /* DataFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataFlow.h; sourceTree = "<group>"; };
-		35BD5FE01FD0299200E5EADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35BD5FE81FD0299C00E5EADC /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
-		35BD5FEA1FD0299C00E5EADC /* BaseEntityStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEntityStorage.swift; sourceTree = "<group>"; };
-		35BD5FEC1FD0299C00E5EADC /* EntityCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollection.swift; sourceTree = "<group>"; };
-		35BD5FED1FD0299C00E5EADC /* EntityCollectionProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollectionProvider.swift; sourceTree = "<group>"; };
-		35BD5FEE1FD0299C00E5EADC /* EntityCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollectionView.swift; sourceTree = "<group>"; };
-		35BD5FEF1FD0299C00E5EADC /* EntityCollectionViewProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollectionViewProvider.swift; sourceTree = "<group>"; };
-		35BD5FF11FD0299C00E5EADC /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
-		35BD5FF41FD0299C00E5EADC /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		35BD5FF51FD0299C00E5EADC /* TransactionQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionQueue.swift; sourceTree = "<group>"; };
 		35BD60071FD02C0000E5EADC /* HarmonyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HarmonyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35BD60091FD02C0000E5EADC /* HarmonyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonyTests.swift; sourceTree = "<group>"; };
 		35BD600B1FD02C0000E5EADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35BD60121FD03E4200E5EADC /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		35BD60141FD0403100E5EADC /* EntityCollectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionState.swift; sourceTree = "<group>"; };
-		35BD60181FD0657300E5EADC /* DatabaseSID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSID.swift; sourceTree = "<group>"; };
-		35BD601B1FD1595B00E5EADC /* Lock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lock.swift; sourceTree = "<group>"; };
-		661935B120BAE6D200783EA8 /* EntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityView.swift; sourceTree = "<group>"; };
-		661935B320BAE8D500783EA8 /* EntityViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityViewProvider.swift; sourceTree = "<group>"; };
-		661935B620BAE97500783EA8 /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
-		661935B820BAFFBD00783EA8 /* ObserverCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverCollection.swift; sourceTree = "<group>"; };
 		661935BA20BB095200783EA8 /* EntityViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityViewTests.swift; sourceTree = "<group>"; };
-		6647D8BC209CA6AD00E3EF9B /* EntityCollectionStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionStateManager.swift; sourceTree = "<group>"; };
-		6647D8BF209D654400E3EF9B /* EntityStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityStorage.swift; sourceTree = "<group>"; };
-		6647D8C1209F4F4D00E3EF9B /* EntityCollectionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionStorage.swift; sourceTree = "<group>"; };
-		6647D8C320A7293D00E3EF9B /* InMemoryEntityStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryEntityStorage.swift; sourceTree = "<group>"; };
-		6647D8C520A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryBaseEntityStorage.swift; sourceTree = "<group>"; };
-		668F6A1720A9C59D007B7DAD /* EntityUpdatesListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityUpdatesListener.swift; sourceTree = "<group>"; };
+		6645EAA520D628DB00E76894 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		668F6A1920A9E0B1007B7DAD /* EntityCollectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionViewTests.swift; sourceTree = "<group>"; };
+		66FC491820D646BD00E60E1F /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		66FC491B20D646BD00E60E1F /* TransactionQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionQueue.swift; sourceTree = "<group>"; };
+		66FC491C20D646BD00E60E1F /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		66FC491E20D646BD00E60E1F /* Predicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
+		66FC492020D646BD00E60E1F /* EntityCollectionProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollectionProvider.swift; sourceTree = "<group>"; };
+		66FC492120D646BD00E60E1F /* EntityCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollection.swift; sourceTree = "<group>"; };
+		66FC492220D646BD00E60E1F /* EntityCollectionStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollectionStateManager.swift; sourceTree = "<group>"; };
+		66FC492320D646BD00E60E1F /* EntityCollectionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollectionState.swift; sourceTree = "<group>"; };
+		66FC492520D646BD00E60E1F /* EntityUpdatesListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityUpdatesListener.swift; sourceTree = "<group>"; };
+		66FC492620D646BD00E60E1F /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		66FC492720D646BD00E60E1F /* BaseEntityIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEntityIdentifier.swift; sourceTree = "<group>"; };
+		66FC492820D646BD00E60E1F /* EntityUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityUpdate.swift; sourceTree = "<group>"; };
+		66FC492A20D646BD00E60E1F /* EntityCollectionStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollectionStorage.swift; sourceTree = "<group>"; };
+		66FC492B20D646BD00E60E1F /* InMemoryBaseEntityStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryBaseEntityStorage.swift; sourceTree = "<group>"; };
+		66FC492C20D646BD00E60E1F /* EntityStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityStorage.swift; sourceTree = "<group>"; };
+		66FC492D20D646BD00E60E1F /* BaseEntityStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEntityStorage.swift; sourceTree = "<group>"; };
+		66FC492E20D646BD00E60E1F /* InMemoryEntityStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryEntityStorage.swift; sourceTree = "<group>"; };
+		66FC492F20D646BD00E60E1F /* SQLIteBaseEntityStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLIteBaseEntityStorage.swift; sourceTree = "<group>"; };
+		66FC493020D646BD00E60E1F /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		66FC493220D646BD00E60E1F /* EntityViewProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityViewProvider.swift; sourceTree = "<group>"; };
+		66FC493320D646BD00E60E1F /* EntityCollectionViewProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollectionViewProvider.swift; sourceTree = "<group>"; };
+		66FC493420D646BD00E60E1F /* EntityCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCollectionView.swift; sourceTree = "<group>"; };
+		66FC493520D646BD00E60E1F /* EntityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityView.swift; sourceTree = "<group>"; };
+		66FC493720D646BD00E60E1F /* DatabaseSID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseSID.swift; sourceTree = "<group>"; };
+		66FC493A20D646BD00E60E1F /* WeakBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
+		66FC493B20D646BD00E60E1F /* ObserverCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverCollection.swift; sourceTree = "<group>"; };
+		66FC493D20D646BD00E60E1F /* Lock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lock.swift; sourceTree = "<group>"; };
+		66FC493E20D646BD00E60E1F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66FC493F20D646BD00E60E1F /* DataFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFlow.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6645EAA620D628DB00E76894 /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,53 +112,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3562E9B91FEC11C4007E83A6 /* Collection */ = {
-			isa = PBXGroup;
-			children = (
-				35BD5FEC1FD0299C00E5EADC /* EntityCollection.swift */,
-				35BD5FED1FD0299C00E5EADC /* EntityCollectionProvider.swift */,
-				35BD60141FD0403100E5EADC /* EntityCollectionState.swift */,
-				6647D8BC209CA6AD00E3EF9B /* EntityCollectionStateManager.swift */,
-			);
-			path = Collection;
-			sourceTree = "<group>";
-		};
-		3562E9BA1FEC11D9007E83A6 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				3562E9BE1FED0F11007E83A6 /* BaseEntityIdentifier.swift */,
-				35BD5FF11FD0299C00E5EADC /* Entity.swift */,
-				3562E9C21FED62B5007E83A6 /* EntityUpdate.swift */,
-				668F6A1720A9C59D007B7DAD /* EntityUpdatesListener.swift */,
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		3562E9BB1FEC11E9007E83A6 /* Transaction */ = {
-			isa = PBXGroup;
-			children = (
-				35BD5FF41FD0299C00E5EADC /* Transaction.swift */,
-				35BD5FF51FD0299C00E5EADC /* TransactionQueue.swift */,
-			);
-			path = Transaction;
-			sourceTree = "<group>";
-		};
-		3562E9BD1FEC120F007E83A6 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				661935B120BAE6D200783EA8 /* EntityView.swift */,
-				661935B320BAE8D500783EA8 /* EntityViewProvider.swift */,
-				35BD5FEE1FD0299C00E5EADC /* EntityCollectionView.swift */,
-				35BD5FEF1FD0299C00E5EADC /* EntityCollectionViewProvider.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		35BD5FD21FD0299200E5EADC = {
 			isa = PBXGroup;
 			children = (
-				35BD5FDE1FD0299200E5EADC /* Harmony */,
+				66FC491620D646BD00E60E1F /* Sources */,
 				35BD60081FD02C0000E5EADC /* HarmonyTests */,
+				661D9DDB20D6286E00BC2754 /* Frameworks */,
 				35BD5FDD1FD0299200E5EADC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -166,42 +131,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		35BD5FDE1FD0299200E5EADC /* Harmony */ = {
-			isa = PBXGroup;
-			children = (
-				35BD5FE91FD0299C00E5EADC /* Sources */,
-				35BD5FE71FD0299C00E5EADC /* Example */,
-				35BD601A1FD1594800E5EADC /* Libraries */,
-				35BD5FDF1FD0299200E5EADC /* DataFlow.h */,
-				35BD5FE01FD0299200E5EADC /* Info.plist */,
-			);
-			path = Harmony;
-			sourceTree = "<group>";
-		};
-		35BD5FE71FD0299C00E5EADC /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				35BD5FE81FD0299C00E5EADC /* TestModel.swift */,
-			);
-			path = Example;
-			sourceTree = "<group>";
-		};
-		35BD5FE91FD0299C00E5EADC /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				3562E9BA1FEC11D9007E83A6 /* Entity */,
-				3562E9B91FEC11C4007E83A6 /* Collection */,
-				3562E9BB1FEC11E9007E83A6 /* Transaction */,
-				3562E9BD1FEC120F007E83A6 /* View */,
-				6647D8BE209D619100E3EF9B /* Storage */,
-				661935B020BA4C8600783EA8 /* Predicate */,
-				661935B520BAE95F00783EA8 /* Helpers */,
-				35BD60121FD03E4200E5EADC /* Database.swift */,
-				35BD60181FD0657300E5EADC /* DatabaseSID.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
 		35BD60081FD02C0000E5EADC /* HarmonyTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,41 +142,136 @@
 			path = HarmonyTests;
 			sourceTree = "<group>";
 		};
-		35BD601A1FD1594800E5EADC /* Libraries */ = {
+		661D9DDB20D6286E00BC2754 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				35BD601B1FD1595B00E5EADC /* Lock.swift */,
+				6645EAA520D628DB00E76894 /* SQLite.framework */,
 			);
-			path = Libraries;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		661935B020BA4C8600783EA8 /* Predicate */ = {
+		66FC491620D646BD00E60E1F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				354299001FF2877600D1CEE7 /* Predicate.swift */,
+				66FC491720D646BD00E60E1F /* Example */,
+				66FC491920D646BD00E60E1F /* Harmony */,
+				66FC493C20D646BD00E60E1F /* Libraries */,
+				66FC493E20D646BD00E60E1F /* Info.plist */,
+				66FC493F20D646BD00E60E1F /* DataFlow.h */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		66FC491720D646BD00E60E1F /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				66FC491820D646BD00E60E1F /* TestModel.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		66FC491920D646BD00E60E1F /* Harmony */ = {
+			isa = PBXGroup;
+			children = (
+				66FC491A20D646BD00E60E1F /* Transaction */,
+				66FC491D20D646BD00E60E1F /* Predicate */,
+				66FC491F20D646BD00E60E1F /* Collection */,
+				66FC492420D646BD00E60E1F /* Entity */,
+				66FC492920D646BD00E60E1F /* Storage */,
+				66FC493020D646BD00E60E1F /* Database.swift */,
+				66FC493120D646BD00E60E1F /* View */,
+				66FC493620D646BD00E60E1F /* Coding */,
+				66FC493720D646BD00E60E1F /* DatabaseSID.swift */,
+				66FC493920D646BD00E60E1F /* Helpers */,
+			);
+			path = Harmony;
+			sourceTree = "<group>";
+		};
+		66FC491A20D646BD00E60E1F /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				66FC491B20D646BD00E60E1F /* TransactionQueue.swift */,
+				66FC491C20D646BD00E60E1F /* Transaction.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		66FC491D20D646BD00E60E1F /* Predicate */ = {
+			isa = PBXGroup;
+			children = (
+				66FC491E20D646BD00E60E1F /* Predicate.swift */,
 			);
 			path = Predicate;
 			sourceTree = "<group>";
 		};
-		661935B520BAE95F00783EA8 /* Helpers */ = {
+		66FC491F20D646BD00E60E1F /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				661935B620BAE97500783EA8 /* WeakBox.swift */,
-				661935B820BAFFBD00783EA8 /* ObserverCollection.swift */,
+				66FC492020D646BD00E60E1F /* EntityCollectionProvider.swift */,
+				66FC492120D646BD00E60E1F /* EntityCollection.swift */,
+				66FC492220D646BD00E60E1F /* EntityCollectionStateManager.swift */,
+				66FC492320D646BD00E60E1F /* EntityCollectionState.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		66FC492420D646BD00E60E1F /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				66FC492520D646BD00E60E1F /* EntityUpdatesListener.swift */,
+				66FC492620D646BD00E60E1F /* Entity.swift */,
+				66FC492720D646BD00E60E1F /* BaseEntityIdentifier.swift */,
+				66FC492820D646BD00E60E1F /* EntityUpdate.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		66FC492920D646BD00E60E1F /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				66FC492A20D646BD00E60E1F /* EntityCollectionStorage.swift */,
+				66FC492B20D646BD00E60E1F /* InMemoryBaseEntityStorage.swift */,
+				66FC492C20D646BD00E60E1F /* EntityStorage.swift */,
+				66FC492D20D646BD00E60E1F /* BaseEntityStorage.swift */,
+				66FC492E20D646BD00E60E1F /* InMemoryEntityStorage.swift */,
+				66FC492F20D646BD00E60E1F /* SQLIteBaseEntityStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		66FC493120D646BD00E60E1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66FC493220D646BD00E60E1F /* EntityViewProvider.swift */,
+				66FC493320D646BD00E60E1F /* EntityCollectionViewProvider.swift */,
+				66FC493420D646BD00E60E1F /* EntityCollectionView.swift */,
+				66FC493520D646BD00E60E1F /* EntityView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		66FC493620D646BD00E60E1F /* Coding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coding;
+			sourceTree = "<group>";
+		};
+		66FC493920D646BD00E60E1F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				66FC493A20D646BD00E60E1F /* WeakBox.swift */,
+				66FC493B20D646BD00E60E1F /* ObserverCollection.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		6647D8BE209D619100E3EF9B /* Storage */ = {
+		66FC493C20D646BD00E60E1F /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				35BD5FEA1FD0299C00E5EADC /* BaseEntityStorage.swift */,
-				6647D8C520A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift */,
-				6647D8BF209D654400E3EF9B /* EntityStorage.swift */,
-				6647D8C320A7293D00E3EF9B /* InMemoryEntityStorage.swift */,
-				6647D8C1209F4F4D00E3EF9B /* EntityCollectionStorage.swift */,
+				66FC493D20D646BD00E60E1F /* Lock.swift */,
 			);
-			path = Storage;
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +281,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35BD5FE11FD0299200E5EADC /* DataFlow.h in Headers */,
+				66FC495D20D646BE00E60E1F /* DataFlow.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66FC495C20D646BE00E60E1F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,32 +403,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35BD5FFC1FD0299C00E5EADC /* EntityCollectionViewProvider.swift in Sources */,
-				35BD60191FD0657300E5EADC /* DatabaseSID.swift in Sources */,
-				35BD5FFB1FD0299C00E5EADC /* EntityCollectionView.swift in Sources */,
-				354299011FF2877600D1CEE7 /* Predicate.swift in Sources */,
-				35BD60011FD0299C00E5EADC /* Transaction.swift in Sources */,
-				3562E9C31FED62B5007E83A6 /* EntityUpdate.swift in Sources */,
-				6647D8C620A72C5600E3EF9B /* InMemoryBaseEntityStorage.swift in Sources */,
-				35BD601C1FD1595B00E5EADC /* Lock.swift in Sources */,
-				661935B220BAE6D200783EA8 /* EntityView.swift in Sources */,
-				6647D8BD209CA6AD00E3EF9B /* EntityCollectionStateManager.swift in Sources */,
-				35BD60151FD0403100E5EADC /* EntityCollectionState.swift in Sources */,
-				35BD5FF91FD0299C00E5EADC /* EntityCollection.swift in Sources */,
-				35BD5FFE1FD0299C00E5EADC /* Entity.swift in Sources */,
-				6647D8C2209F4F4D00E3EF9B /* EntityCollectionStorage.swift in Sources */,
-				661935B420BAE8D500783EA8 /* EntityViewProvider.swift in Sources */,
-				661935B720BAE97500783EA8 /* WeakBox.swift in Sources */,
-				35BD5FFA1FD0299C00E5EADC /* EntityCollectionProvider.swift in Sources */,
-				35BD5FF71FD0299C00E5EADC /* BaseEntityStorage.swift in Sources */,
-				35BD5FF61FD0299C00E5EADC /* TestModel.swift in Sources */,
-				661935B920BAFFBD00783EA8 /* ObserverCollection.swift in Sources */,
-				6647D8C0209D654400E3EF9B /* EntityStorage.swift in Sources */,
-				6647D8C420A7293D00E3EF9B /* InMemoryEntityStorage.swift in Sources */,
-				35BD60131FD03E4200E5EADC /* Database.swift in Sources */,
-				668F6A1820A9C59D007B7DAD /* EntityUpdatesListener.swift in Sources */,
-				35BD60021FD0299C00E5EADC /* TransactionQueue.swift in Sources */,
-				3562E9BF1FED0F11007E83A6 /* BaseEntityIdentifier.swift in Sources */,
+				66FC494720D646BD00E60E1F /* EntityCollectionState.swift in Sources */,
+				66FC494120D646BD00E60E1F /* TransactionQueue.swift in Sources */,
+				66FC494020D646BD00E60E1F /* TestModel.swift in Sources */,
+				66FC495020D646BD00E60E1F /* InMemoryEntityStorage.swift in Sources */,
+				66FC494620D646BD00E60E1F /* EntityCollectionStateManager.swift in Sources */,
+				66FC495120D646BD00E60E1F /* SQLIteBaseEntityStorage.swift in Sources */,
+				66FC494E20D646BD00E60E1F /* EntityStorage.swift in Sources */,
+				66FC495520D646BD00E60E1F /* EntityCollectionView.swift in Sources */,
+				66FC495620D646BD00E60E1F /* EntityView.swift in Sources */,
+				66FC495720D646BD00E60E1F /* DatabaseSID.swift in Sources */,
+				66FC495B20D646BE00E60E1F /* Lock.swift in Sources */,
+				66FC495A20D646BE00E60E1F /* ObserverCollection.swift in Sources */,
+				66FC495920D646BE00E60E1F /* WeakBox.swift in Sources */,
+				66FC494A20D646BD00E60E1F /* BaseEntityIdentifier.swift in Sources */,
+				66FC494B20D646BD00E60E1F /* EntityUpdate.swift in Sources */,
+				66FC494420D646BD00E60E1F /* EntityCollectionProvider.swift in Sources */,
+				66FC494820D646BD00E60E1F /* EntityUpdatesListener.swift in Sources */,
+				66FC494C20D646BD00E60E1F /* EntityCollectionStorage.swift in Sources */,
+				66FC494920D646BD00E60E1F /* Entity.swift in Sources */,
+				66FC494220D646BD00E60E1F /* Transaction.swift in Sources */,
+				66FC495320D646BD00E60E1F /* EntityViewProvider.swift in Sources */,
+				66FC494520D646BD00E60E1F /* EntityCollection.swift in Sources */,
+				66FC494320D646BD00E60E1F /* Predicate.swift in Sources */,
+				66FC494D20D646BD00E60E1F /* InMemoryBaseEntityStorage.swift in Sources */,
+				66FC495420D646BD00E60E1F /* EntityCollectionViewProvider.swift in Sources */,
+				66FC495220D646BD00E60E1F /* Database.swift in Sources */,
+				66FC494F20D646BD00E60E1F /* BaseEntityStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,7 +577,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Harmony/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -573,7 +603,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Harmony/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -588,6 +622,7 @@
 		35BD600F1FD02C0000E5EADC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P7GF9BUR3X;
 				INFOPLIST_FILE = HarmonyTests/Info.plist;
@@ -602,6 +637,7 @@
 		35BD60101FD02C0000E5EADC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P7GF9BUR3X;
 				INFOPLIST_FILE = HarmonyTests/Info.plist;

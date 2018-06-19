@@ -12,7 +12,7 @@ final class EntityViewProvider<Element: Entity>
         }
     }
 
-    func view(stateManager: EntityCollectionStateManager<Element>, key: Element.Key) -> EntityView<Element>
+    func view(stateManager: EntityCollectionStateManager<Element>, key: Element.Key) throws -> EntityView<Element>
     {
         let view: EntityView<Element>
 
@@ -21,7 +21,7 @@ final class EntityViewProvider<Element: Entity>
             view = existingView
         }
         else {
-            view = makeView(stateManager: stateManager, key: key)
+            view = try makeView(stateManager: stateManager, key: key)
             self.views[key] = WeakBox(view)
         }
 
@@ -35,10 +35,10 @@ final class EntityViewProvider<Element: Entity>
 
     // MARK: - Private Functions
 
-    private func makeView(stateManager: EntityCollectionStateManager<Element>, key: Element.Key) -> EntityView<Element>
+    private func makeView(stateManager: EntityCollectionStateManager<Element>, key: Element.Key) throws -> EntityView<Element>
     {
-        let view = stateManager.read { state in
-            return EntityView(key: key, storage: state)
+        let view = try stateManager.read { state in
+            return try EntityView(key: key, storage: state)
         }
 
         self.views[key] = WeakBox(view)

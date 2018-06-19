@@ -15,14 +15,14 @@ public class Database
         return self.collectionProvider.collection(type)
     }
 
-    public func view<P: Predicate>(_ type: P.Element.Type, predicate: P) -> EntityCollectionView<P.Element>
+    public func view<P: Predicate>(_ type: P.Element.Type, predicate: P) throws -> EntityCollectionView<P.Element>
     {
-        return collection(type).view(predicate)
+        return try collection(type).view(predicate)
     }
 
-    public func view<E: Entity>(_ type: E.Type, key: E.Key) -> EntityView<E>
+    public func view<E: Entity>(_ type: E.Type, key: E.Key) throws -> EntityView<E>
     {
-        return collection(type).view(key)
+        return try collection(type).view(key)
     }
 
     // FIXME: Not implemented

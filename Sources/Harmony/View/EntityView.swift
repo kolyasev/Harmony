@@ -5,11 +5,11 @@ public final class EntityView<Element: Entity>
 {
     // MARK: - Initializer
 
-    init<Storage: EntityReadStorage>(key: Element.Key, storage: Storage) where Storage.EnityType == Element
+    init<Storage: EntityReadStorage>(key: Element.Key, storage: Storage) throws where Storage.EnityType == Element
     {
         self.key = key
-        self.queue.sync {
-            self.update(with: storage)
+        try self.queue.sync {
+            try self.update(with: storage)
         }
     }
 
@@ -46,9 +46,9 @@ public final class EntityView<Element: Entity>
 
     // MARK: - Private Functions
 
-    private func update<Storage: EntityReadStorage>(with storage: Storage) where Storage.EnityType == Element
+    private func update<Storage: EntityReadStorage>(with storage: Storage) throws where Storage.EnityType == Element
     {
-        self.entity = storage.entity(forKey: self.key)
+        self.entity = try storage.entity(forKey: self.key)
         didUpdateEntity()
     }
 

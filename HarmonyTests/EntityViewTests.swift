@@ -19,23 +19,23 @@ class EntityViewTests: XCTestCase
 
     func testShouldReuseViews()
     {
-        let view1 = self.db.view(ChildModel.self, key: "1")
-        let view2 = self.db.view(ChildModel.self, key: "1")
+        let view1 = try! self.db.view(ChildModel.self, key: "1")
+        let view2 = try! self.db.view(ChildModel.self, key: "1")
 
         XCTAssert(view1 === view2)
     }
 
     func testShouldNotReuseViews()
     {
-        let view1 = self.db.view(ChildModel.self, key: "1")
-        let view2 = self.db.view(ChildModel.self, key: "2")
+        let view1 = try! self.db.view(ChildModel.self, key: "1")
+        let view2 = try! self.db.view(ChildModel.self, key: "2")
 
         XCTAssert(view1 !== view2)
     }
 
     func testViewUpdate()
     {
-        let view = self.db.view(ChildModel.self, key: "1")
+        let view = try! self.db.view(ChildModel.self, key: "1")
 
         var events: [ChildModel?] = []
         let expectation = self.expectation(description: "Expect update.")
@@ -49,9 +49,9 @@ class EntityViewTests: XCTestCase
         }
 
         let collection = self.db.collection(ChildModel.self)
-        collection.write { state in
-            state.insert(entity: ChildModel(id: "1", name: "child 1"))
-            state.insert(entity: ChildModel(id: "2", name: "child 2"))
+        try! collection.write { state in
+            try state.insert(entity: ChildModel(id: "1", name: "child 1"))
+            try state.insert(entity: ChildModel(id: "2", name: "child 2"))
         }
 
         wait(for: [expectation], timeout: 1.0)

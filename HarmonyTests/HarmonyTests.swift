@@ -28,12 +28,12 @@ class HarmonyTests: XCTestCase
         let entity = TestModel(id: "3", title: "test", number: 10, child: ChildModel(id: "5", name: "child"))
         let collection = self.db.collection(TestModel.self)
 
-        collection.write { state in
-            state.insert(entity: entity)
+        try! collection.write { state in
+            try state.insert(entity: entity)
         }
 
-        let entityFromDB = collection.read { state in
-            return state.entity(forKey: "3")
+        let entityFromDB = try! collection.read { state in
+            return try state.entity(forKey: "3")
         }
 
         XCTAssertNotNil(entityFromDB)
@@ -45,9 +45,9 @@ class HarmonyTests: XCTestCase
         let entity = TestModel(id: "3", title: "test", number: 10, child: ChildModel(id: "5", name: "child"))
         let collection = self.db.collection(TestModel.self)
 
-        let entityInState = collection.write { state -> TestModel? in
-            state.insert(entity: entity)
-            return state.entity(forKey: "3")
+        let entityInState = try! collection.write { state -> TestModel? in
+            try state.insert(entity: entity)
+            return try state.entity(forKey: "3")
         }
 
         XCTAssertNotNil(entityInState)
@@ -59,14 +59,14 @@ class HarmonyTests: XCTestCase
         let entity = TestModel(id: "3", title: "test", number: 10, child: ChildModel(id: "5", name: "child"))
         let collection = self.db.collection(TestModel.self)
 
-        collection.write { state in
-            state.insert(entity: entity)
+        try! collection.write { state in
+            try state.insert(entity: entity)
         }
 
         let newEntity = TestModel(id: "3", title: "new test", number: 15, child: entity.child)
-        let entityInState = collection.write { state -> TestModel? in
-            state.insert(entity: newEntity)
-            return state.entity(forKey: "3")
+        let entityInState = try! collection.write { state -> TestModel? in
+            try state.insert(entity: newEntity)
+            return try state.entity(forKey: "3")
         }
 
         XCTAssertNotNil(entityInState)

@@ -22,19 +22,19 @@ public class EntityCollectionReadState<T: Entity>: EntityCollectionState<T>, Ent
 
     // MARK: - Functions: Read
 
-    public func entity(forKey key: T.Key) -> T?
+    public func entity(forKey key: T.Key) throws -> T?
     {
-        return self.entityStorage.entity(forKey: key)
+        return try self.entityStorage.entity(forKey: key)
     }
 
-    public func enumerate(keys enumerator: (T.Key, inout Bool) -> Void)
+    public func enumerate(keys enumerator: (T.Key, inout Bool) -> Void) throws
     {
-        self.entityStorage.enumerate(keys: enumerator)
+        try self.entityStorage.enumerate(keys: enumerator)
     }
 
-    public func enumerate(entities enumerator: (T, inout Bool) -> Void)
+    public func enumerate(entities enumerator: (T, inout Bool) -> Void) throws
     {
-        self.entityStorage.enumerate(entities: enumerator)
+        try self.entityStorage.enumerate(entities: enumerator)
     }
 
     // MARK: - Private Properties
@@ -62,7 +62,7 @@ public final class EntityCollectionReadWriteState<T: Entity>: EntityCollectionRe
 
     // MARK: - Functions: Read
 
-    public override func entity(forKey key: T.Key) -> T?
+    public override func entity(forKey key: T.Key) throws -> T?
     {
         let entity: T?
 
@@ -71,13 +71,13 @@ public final class EntityCollectionReadWriteState<T: Entity>: EntityCollectionRe
             entity = update.entity
         }
         else {
-            entity = super.entity(forKey: key)
+            entity = try super.entity(forKey: key)
         }
 
         return entity
     }
 
-    public override func enumerate(keys enumerator: (T.Key, inout Bool) -> Void)
+    public override func enumerate(keys enumerator: (T.Key, inout Bool) -> Void) throws
     {
         var stop = false
         for case .insert(let entity) in self.updates.values {
@@ -85,7 +85,7 @@ public final class EntityCollectionReadWriteState<T: Entity>: EntityCollectionRe
             if stop { return }
         }
 
-        super.enumerate(keys: { key, stop in
+        try super.enumerate(keys: { key, stop in
             guard self.updates[key] == nil else {
                 return
             }
@@ -93,7 +93,7 @@ public final class EntityCollectionReadWriteState<T: Entity>: EntityCollectionRe
         })
     }
 
-    public override func enumerate(entities enumerator: (T, inout Bool) -> Void)
+    public override func enumerate(entities enumerator: (T, inout Bool) -> Void) throws
     {
         var stop = false
         for case .insert(let entity) in self.updates.values {
@@ -101,7 +101,7 @@ public final class EntityCollectionReadWriteState<T: Entity>: EntityCollectionRe
             if stop { return }
         }
 
-        super.enumerate(entities: { entity, stop in
+        try super.enumerate(entities: { entity, stop in
             guard self.updates[entity.key] == nil else {
                 return
             }
@@ -111,29 +111,29 @@ public final class EntityCollectionReadWriteState<T: Entity>: EntityCollectionRe
 
     // MARK: - Functions: Write
 
-    public func insert(entity: T)
+    public func insert(entity: T) throws
     {
         self.updates[entity.key] = .insert(entity: entity)
     }
 
-    public func removeEntity(forKey key: T.Key)
+    public func removeEntity(forKey key: T.Key) throws
     {
         self.updates[key] = .remove(key: key)
     }
 
     // MARK: - Functions
 
-    func writeChanges<Storage: EntityReadWriteStorage>(to entityStorage: Storage) where Storage.EnityType == T
+    func writeChanges<Storage: EntityReadWriteStorage>(to entityStorage: Storage) throws where Storage.EnityType == T
     {
         for update in self.updates.values
         {
             switch update
             {
             case .insert(let entity):
-                entityStorage.insert(entity: entity)
+                try entityStorage.insert(entity: entity)
 
             case .remove(let key):
-                entityStorage.removeEntity(forKey: key)
+                try entityStorage.removeEntity(forKey: key)
             }
         }
     }

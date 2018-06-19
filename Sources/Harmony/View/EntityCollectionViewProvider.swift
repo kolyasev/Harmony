@@ -12,7 +12,7 @@ final class EntityCollectionViewProvider<Element: Entity>
         }
     }
 
-    func view<P: Predicate>(stateManager: EntityCollectionStateManager<Element>, predicate: P) -> EntityCollectionView<P.Element> where P.Element == Element
+    func view<P: Predicate>(stateManager: EntityCollectionStateManager<Element>, predicate: P) throws -> EntityCollectionView<P.Element> where P.Element == Element
     {
         let identifier = AnyPredicate(predicate)
         let view: EntityCollectionView<Element>
@@ -22,7 +22,7 @@ final class EntityCollectionViewProvider<Element: Entity>
             view = existingView
         }
         else {
-            view = makeView(stateManager: stateManager, predicate: predicate)
+            view = try makeView(stateManager: stateManager, predicate: predicate)
             self.views[identifier] = WeakBox(view)
         }
 
@@ -31,10 +31,10 @@ final class EntityCollectionViewProvider<Element: Entity>
 
     // MARK: - Private Functions
 
-    private func makeView<P: Predicate>(stateManager: EntityCollectionStateManager<Element>, predicate: P) -> EntityCollectionView<P.Element> where P.Element == Element
+    private func makeView<P: Predicate>(stateManager: EntityCollectionStateManager<Element>, predicate: P) throws -> EntityCollectionView<P.Element> where P.Element == Element
     {
-        let view = stateManager.read { state in
-            return EntityCollectionView(predicate: predicate, storage: state)
+        let view = try stateManager.read { state in
+            return try EntityCollectionView(predicate: predicate, storage: state)
         }
 
         let identifier = AnyPredicate(predicate)

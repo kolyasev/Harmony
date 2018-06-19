@@ -5,11 +5,11 @@ public final class EntityCollectionView<Element: Entity>
 {
     // MARK: - Initializer
 
-    init<P: Predicate, Storage: EntityReadStorage>(predicate: P, storage: Storage) where P.Element == Element, Storage.EnityType == Element
+    init<P: Predicate, Storage: EntityReadStorage>(predicate: P, storage: Storage) throws where P.Element == Element, Storage.EnityType == Element
     {
         self.predicate = AnyPredicate(predicate)
-        self.queue.sync {
-            self.update(with: storage)
+        try self.queue.sync {
+            try self.update(with: storage)
         }
     }
 
@@ -37,11 +37,11 @@ public final class EntityCollectionView<Element: Entity>
 
     // MARK: - Private Functions
 
-    private func update<Storage: EntityReadStorage>(with storage: Storage) where Storage.EnityType == Element
+    private func update<Storage: EntityReadStorage>(with storage: Storage) throws where Storage.EnityType == Element
     {
         var entities: [Element.Key: Element] = [:]
 
-        storage.enumerate(entities: { entity, stop in
+        try storage.enumerate(entities: { entity, stop in
             if self.predicate.evaluate(entity) {
                 entities[entity.key] = entity
             }
