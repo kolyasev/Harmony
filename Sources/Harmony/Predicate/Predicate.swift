@@ -76,7 +76,7 @@ enum Expression<Element, Value>: Hashable, CustomStringConvertible
     }
 }
 
-struct CompoundPredicate<Element, LHS: Predicate, RHS: Predicate>: Predicate
+public struct CompoundPredicate<Element, LHS: Predicate, RHS: Predicate>: Predicate
     where LHS.Element == Element, RHS.Element == Element
 {
     // MARK: - Initialization
@@ -98,13 +98,13 @@ struct CompoundPredicate<Element, LHS: Predicate, RHS: Predicate>: Predicate
 
     // MARK: - Properties: CustomStringConvertible
 
-    var description: String {
+    public var description: String {
         return makeDescription()
     }
 
     // MARK: - Functions
 
-    func evaluate(_ object: Element) -> Bool
+    public func evaluate(_ object: Element) -> Bool
     {
         switch self.type
         {
@@ -175,7 +175,7 @@ struct AnyPredicate<Element: Entity>: Predicate
 
 }
 
-struct EqualPredicate<Element: Entity, Value: Equatable>: Predicate
+public struct EqualPredicate<Element: Entity, Value: Equatable>: Predicate
     where Value: CustomStringConvertible
 {
     // MARK: - Initialization
@@ -194,19 +194,19 @@ struct EqualPredicate<Element: Entity, Value: Equatable>: Predicate
 
     // MARK: - Properties: CustomStringConvertible
 
-    var description: String {
+    public var description: String {
         return makeDescription()
     }
 
     // MARK: - Properties: Hashable
 
-    var hashValue: Int {
+    public var hashValue: Int {
         return self.description.hashValue
     }
 
     // MARK: - Functions
 
-    func evaluate(_ object: Element) -> Bool
+    public func evaluate(_ object: Element) -> Bool
     {
         return self.lhs.value(object) == self.rhs.value(object)
     }
@@ -223,28 +223,28 @@ struct EqualPredicate<Element: Entity, Value: Equatable>: Predicate
 
 // MARK: Predicate && Predicate
 
-func && <Element, LP: Predicate, RP: Predicate>(lhs: LP, rhs: RP) -> CompoundPredicate<Element, LP, RP> where LP.Element == Element, RP.Element == Element
+public func && <Element, LP: Predicate, RP: Predicate>(lhs: LP, rhs: RP) -> CompoundPredicate<Element, LP, RP> where LP.Element == Element, RP.Element == Element
 {
     return CompoundPredicate(type: .and, lhs: lhs, rhs: rhs)
 }
 
 // MARK: Predicate || Predicate
 
-func || <Element, LP: Predicate, RP: Predicate>(lhs: LP, rhs: RP) -> CompoundPredicate<Element, LP, RP> where LP.Element == Element, RP.Element == Element
+public func || <Element, LP: Predicate, RP: Predicate>(lhs: LP, rhs: RP) -> CompoundPredicate<Element, LP, RP> where LP.Element == Element, RP.Element == Element
 {
     return CompoundPredicate(type: .or, lhs: lhs, rhs: rhs)
 }
 
 // MARK: KeyPath == Value
 
-func == <Element: Entity, Value: Equatable>(lhs: KeyPath<Element, Value>, rhs: KeyPath<Element, Value>) -> EqualPredicate<Element, Value>
+public func == <Element: Entity, Value: Equatable>(lhs: KeyPath<Element, Value>, rhs: KeyPath<Element, Value>) -> EqualPredicate<Element, Value>
 {
     return EqualPredicate(lhs: .keyPath(lhs), rhs: .keyPath(rhs))
 }
 
 // MARK: KeyPath == KeyPath
 
-func == <Element: Entity, Value: Equatable>(lhs: KeyPath<Element, Value>, rhs: Value) -> EqualPredicate<Element, Value>
+public func == <Element: Entity, Value: Equatable>(lhs: KeyPath<Element, Value>, rhs: Value) -> EqualPredicate<Element, Value>
 {
     return EqualPredicate(lhs: .keyPath(lhs), rhs: .constant(rhs))
 }
