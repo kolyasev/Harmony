@@ -36,7 +36,7 @@ public protocol BaseEntity: Codable
 
 }
 
-public protocol Entity: BaseEntity
+public protocol Entity: BaseEntity, Equatable
 {
 // MARK: - Associated Types
 
