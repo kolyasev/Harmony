@@ -1,12 +1,8 @@
 
-public protocol Property: Equatable { }
-
-extension String: Property { }
-extension Int: Property { }
-
 struct AnyBaseEntity: BaseEntity
 {
-    
+// MARK: - Initialization
+
     init(_ entity: BaseEntity) {
         self.entity = entity
     }
@@ -15,45 +11,56 @@ struct AnyBaseEntity: BaseEntity
         fatalError()
     }
 
-    func encode(to encoder: Encoder) throws {
-        fatalError()
-    }
+// MARK: - Properties
 
     var identifier: BaseEntityIdentifier {
         return self.entity.identifier
     }
+
+// MARK: - Functions
+
+    func encode(to encoder: Encoder) throws {
+        fatalError()
+    }
+
+// MARK: - Private Properties
 
     private let entity: BaseEntity
 }
 
 public protocol BaseEntity: Codable
 {
+// MARK: - Properties
+
     var identifier: BaseEntityIdentifier { get }
+
 }
 
-public protocol Entity: BaseEntity, Property
+public protocol Entity: BaseEntity
 {
+// MARK: - Associated Types
+
     associatedtype Key: EntityKey
+
+// MARK: - Properties
 
     static var keyPath: KeyPath<Self, Key> { get }
 }
 
-extension Entity {
+extension Entity
+{
+// MARK: - Properties
 
     var key: Key {
         return self[keyPath: Self.keyPath]
     }
-
 }
 
 extension Entity
 {
+// MARK: - Properties
+
     public var identifier: BaseEntityIdentifier {
         return BaseEntityIdentifier(type: type(of: self), stringKey: self.key.description)
     }
 }
-
-public protocol EntityKey: LosslessStringConvertible, Hashable { }
-
-extension String: EntityKey { }
-extension Int: EntityKey { }

@@ -1,7 +1,7 @@
 
 public struct BaseEntityIdentifier: Hashable
 {
-    // MARK: - Initialization
+// MARK: - Initialization
 
     init(type: BaseEntity.Type, stringKey: String)
     {
@@ -10,7 +10,7 @@ public struct BaseEntityIdentifier: Hashable
         self.hashValue = String(describing: type).hashValue ^ stringKey.hashValue
     }
 
-    // MARK: - Properties
+// MARK: - Properties
 
     public let type: BaseEntity.Type
 
@@ -18,7 +18,7 @@ public struct BaseEntityIdentifier: Hashable
 
     public let hashValue: Int
 
-    // MARK: - Functions
+// MARK: - Functions
 
     public static func ==(lhs: BaseEntityIdentifier, rhs: BaseEntityIdentifier) -> Bool
     {

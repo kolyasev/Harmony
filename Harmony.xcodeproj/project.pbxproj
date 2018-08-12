@@ -12,6 +12,7 @@
 		661935BB20BB095200783EA8 /* EntityViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661935BA20BB095200783EA8 /* EntityViewTests.swift */; };
 		6645EAA620D628DB00E76894 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6645EAA520D628DB00E76894 /* SQLite.framework */; };
 		668F6A1A20A9E0B1007B7DAD /* EntityCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F6A1920A9E0B1007B7DAD /* EntityCollectionViewTests.swift */; };
+		66BA8458212053540044839F /* EntityKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BA8457212053540044839F /* EntityKey.swift */; };
 		66FC494020D646BD00E60E1F /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC491820D646BD00E60E1F /* TestModel.swift */; };
 		66FC494120D646BD00E60E1F /* TransactionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC491B20D646BD00E60E1F /* TransactionQueue.swift */; };
 		66FC494220D646BD00E60E1F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC491C20D646BD00E60E1F /* Transaction.swift */; };
@@ -61,6 +62,7 @@
 		661935BA20BB095200783EA8 /* EntityViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityViewTests.swift; sourceTree = "<group>"; };
 		6645EAA520D628DB00E76894 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		668F6A1920A9E0B1007B7DAD /* EntityCollectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionViewTests.swift; sourceTree = "<group>"; };
+		66BA8457212053540044839F /* EntityKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityKey.swift; sourceTree = "<group>"; };
 		66FC491820D646BD00E60E1F /* TestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		66FC491B20D646BD00E60E1F /* TransactionQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionQueue.swift; sourceTree = "<group>"; };
 		66FC491C20D646BD00E60E1F /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			children = (
 				66FC492520D646BD00E60E1F /* EntityUpdatesListener.swift */,
 				66FC492620D646BD00E60E1F /* Entity.swift */,
+				66BA8457212053540044839F /* EntityKey.swift */,
 				66FC492720D646BD00E60E1F /* BaseEntityIdentifier.swift */,
 				66FC492820D646BD00E60E1F /* EntityUpdate.swift */,
 			);
@@ -427,6 +430,7 @@
 				66FC494520D646BD00E60E1F /* EntityCollection.swift in Sources */,
 				66FC494320D646BD00E60E1F /* Predicate.swift in Sources */,
 				66FC494D20D646BD00E60E1F /* InMemoryBaseEntityStorage.swift in Sources */,
+				66BA8458212053540044839F /* EntityKey.swift in Sources */,
 				66FC495420D646BD00E60E1F /* EntityCollectionViewProvider.swift in Sources */,
 				66FC495220D646BD00E60E1F /* Database.swift in Sources */,
 				66FC494F20D646BD00E60E1F /* BaseEntityStorage.swift in Sources */,

@@ -7,6 +7,8 @@ enum EntityUpdate<T: Entity>
 
 extension EntityUpdate
 {
+// MARK: - Properties
+
     var key: T.Key {
         switch self
         {
