@@ -5,7 +5,11 @@ final class EntityCollectionViewProvider<Element: Entity>
 
     func enumerateViews(_ enumerator: (EntityCollectionView<Element>) -> Void)
     {
-        for view in (self.views.values.map{ $0.getValue() }) {
+        let views = self.lock.withCriticalScope {
+            return self.views.values.map{ $0.getValue() }
+        }
+
+        for view in views {
             if let view = view {
                 enumerator(view)
             }
@@ -14,6 +18,8 @@ final class EntityCollectionViewProvider<Element: Entity>
 
     func view<P: Predicate>(stateManager: EntityCollectionStateManager<Element>, predicate: P) throws -> EntityCollectionView<P.Element> where P.Element == Element
     {
+        self.lock.lock(); defer { self.lock.unlock() }
+
         let identifier = AnyPredicate(predicate)
         let view: EntityCollectionView<Element>
 
@@ -46,4 +52,7 @@ final class EntityCollectionViewProvider<Element: Entity>
     // MARK: - Private Properties
 
     private var views: [AnyPredicate<Element>: WeakBox<EntityCollectionView<Element>>] = [:]
+
+    private let lock = Lock()
+
 }

@@ -12,6 +12,8 @@ class EntityCollectionProvider
 
     func collection<Element>(_ type: Element.Type) -> EntityCollection<Element>
     {
+        self.lock.lock(); defer { self.lock.unlock() }
+
         let identifier = ObjectIdentifier(Element.self)
         let collection: EntityCollection<Element>
 
@@ -39,4 +41,7 @@ class EntityCollectionProvider
     private let baseEntityStorage: BaseEntityStorage
 
     private var collections: [ObjectIdentifier: Any] = [:]
+
+    private let lock = Lock()
+
 }
